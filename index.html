@@ -10,7 +10,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #330000, #660000, #000000);
+      background: 
+        url('https://www.transparenttextures.com/patterns/love-heart.png') repeat,
+        linear-gradient(135deg, #330000, #660000);
       color: #ffe6e6;
       padding: 20px;
       line-height: 1.4;
@@ -20,7 +22,8 @@
       text-align: center;
       font-size: 3em;
       color: #ffd700;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      position: relative;
     }
     @keyframes pulse {
       0%,100% { transform: scale(1); }
@@ -32,8 +35,23 @@
       margin-left: 10px;
       animation: pulse 1.5s infinite ease-in-out;
     }
-
-    /* Accordion */
+    .user-info {
+      margin: 15px 0;
+      text-align: center;
+    }
+    #customerName {
+      width: 80%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      color: #ffe6e6;
+      font-family: 'Poppins', sans-serif;
+    }
+    #customerName::placeholder { color: #ffd700; }
     .accordion {
       width: 100%;
       padding: 15px;
@@ -49,7 +67,6 @@
       transition: background 0.3s;
     }
     .accordion:hover { background: rgba(255,255,255,0.15); }
-
     .panel {
       display: none;
       background: rgba(0,0,0,0.4);
@@ -57,9 +74,8 @@
       padding: 10px 15px;
       margin-bottom: 20px;
     }
-
-    /* Menu Items */
     .item {
+      position: relative;
       padding: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
       transition: background 0.3s, border-left 0.3s;
@@ -68,23 +84,42 @@
       background: rgba(255,51,102,0.2);
       border-left: 4px solid #ff3366;
     }
-    .item-title { font-size: 1.1em; font-weight: 600; color: #ffeeee; }
-    .item-desc { font-style: italic; color: #ffd700; margin: 5px 0; }
-    .striker { color: #ff99aa; font-size: 0.9em; }
-
-    /* Quantity control */
+    .item-title {
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #ffeeee;
+    }
+    .item-price {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: #ffcccb;
+      font-weight: 600;
+    }
+    .item-desc {
+      font-style: italic;
+      color: #ffd700;
+      margin: 5px 0;
+    }
+    .striker {
+      color: #ff99aa;
+      font-size: 0.9em;
+    }
     .order-controls {
       margin-top: 8px;
     }
     .order-controls input {
-      width: 50px;
-      padding: 4px;
+      width: 60px;
+      padding: 6px;
       border-radius: 4px;
-      border: 1px solid #ccc;
+      border: none;
+      outline: none;
       font-size: 0.9em;
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      color: #ffe6e6;
     }
-
-    /* Place Order Button */
+    .order-controls input::placeholder { color: #ffd700; }
     #placeOrderBtn {
       width: 100%;
       padding: 15px;
@@ -98,8 +133,14 @@
       transition: background 0.3s;
     }
     #placeOrderBtn:hover { background: #e6004c; }
-
-    /* Responsive Text */
+    #orderSummary {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #ffe6e6;
+    }
+    #orderSummary b { color: #ffd700; }
     @media (max-width: 480px) {
       h1 { font-size: 2.5em; }
       .accordion { font-size: 1em; }
@@ -110,229 +151,272 @@
 <body>
 
   <h1>Gappagap Café</h1>
+  <div class="user-info">
+    <input type="text" id="customerName" placeholder="Enter your name" />
+  </div>
 
   <!-- Sips of Seduction -->
   <button class="accordion">🍸 Sips of Seduction</button>
   <div class="panel">
-    <div class="item">
+    <div class="item" data-price="150">
       <div class="item-title">Velvet Vanilla Tease</div>
+      <div class="item-price">₹150</div>
       <div class="item-desc">Creamy whispers of vanilla looping around your senses.</div>
-      <div class="striker">💋 Striker: Whisper a compliment with every sip.</div>
+      <div class="striker">💋 Whisper a compliment with every sip.</div>
     </div>
-    <div class="item">
+    <div class="item" data-price="140">
       <div class="item-title">Cinnamon Heatwave</div>
+      <div class="item-price">₹140</div>
       <div class="item-desc">Spicy and bold, like an unexpected embrace.</div>
-      <div class="striker">💋 Striker: Hold eye contact for 10 seconds.</div>
+      <div class="striker">💋 Hold eye contact for 10 seconds.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Mocha Melted Mischief</div>
-      <div class="item-desc">Dark chocolate and coffee dancing slowly.</div>
-      <div class="striker">💋 Striker: Share one secret fantasy.</div>
+    <div class="item" data-price="160">
+      <div class="item-title">Raspberry Rapture</div>
+      <div class="item-price">₹160</div>
+      <div class="item-desc">Tart berries meet sweet syrup in a seductive swirl.</div>
+      <div class="striker">💋 Feed your partner a raspberry kiss.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Cherry Blaze Fizz</div>
-      <div class="item-desc">Sweet cherry lip-lick with a fizzy twist.</div>
-      <div class="striker">💋 Striker: Kiss the rim before each sip.</div>
+    <div class="item" data-price="170">
+      <div class="item-title">Spiced Mango Mirage</div>
+      <div class="item-price">₹170</div>
+      <div class="item-desc">Exotic mango with a hint of chili for a fiery twist.</div>
+      <div class="striker">💋 Trace a chili line on their wrist.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Spiced Rose Latte</div>
-      <div class="item-desc">Floral hints that linger on your lips.</div>
-      <div class="striker">💋 Striker: Breathe in deeply and exhale on your partner’s neck.</div>
+    <div class="item" data-price="180">
+      <div class="item-title">Chocolate Chili Elixir</div>
+      <div class="item-price">₹180</div>
+      <div class="item-desc">Silky chocolate caressed by a spicy chili kick.</div>
+      <div class="striker">💋 Blow a warm breath on their neck.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Midnight Chocolate Kiss</div>
-      <div class="item-desc">Velvety chocolate that tastes like a stolen midnight kiss.</div>
-      <div class="striker">💋 Striker: Feed each other one drop.</div>
+    <div class="item" data-price="155">
+      <div class="item-title">Strawberry Kiss Royale</div>
+      <div class="item-price">₹155</div>
+      <div class="item-desc">Fresh strawberries flirt with bubbly prosecco.</div>
+      <div class="striker">💋 Place a strawberry on their lips.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Scarlet Spark Sangria</div>
-      <div class="item-desc">Fruity red glow in every glass.</div>
-      <div class="striker">💋 Striker: Toast with a slow clink of glasses.</div>
+    <div class="item" data-price="145">
+      <div class="item-title">Caramel Caress Latte</div>
+      <div class="item-price">₹145</div>
+      <div class="item-desc">Sweet caramel swirls like a tender touch.</div>
+      <div class="striker">💋 Whisper a secret while sipping.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Fiery Ginger Brew</div>
-      <div class="item-desc">A warm rush that tingles your senses.</div>
-      <div class="striker">💋 Striker: Brush lips on your partner’s ear.</div>
+    <div class="item" data-price="165">
+      <div class="item-title">Passionfruit Pout</div>
+      <div class="item-price">₹165</div>
+      <div class="item-desc">Tropical tang with a sultry foam finish.</div>
+      <div class="striker">💋 Kiss their palm after each sip.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Passionfruit Whisper</div>
-      <div class="item-desc">Tart meets sweet in a flirtatious swirl.</div>
-      <div class="striker">💋 Striker: Lean in and whisper one desire.</div>
+    <div class="item" data-price="175">
+      <div class="item-title">Mocha Midnight Whispers</div>
+      <div class="item-price">₹175</div>
+      <div class="item-desc">Dark coffee entwined with chocolate secrets.</div>
+      <div class="striker">💋 Share a slow, sensuous sip together.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Cardamom Caress Cappuccino</div>
-      <div class="item-desc">Spiced warmth like a slow caress.</div>
-      <div class="striker">💋 Striker: Trace your partner’s name on the cup.</div>
+    <div class="item" data-price="150">
+      <div class="item-title">Peppermint Pulse</div>
+      <div class="item-price">₹150</div>
+      <div class="item-desc">Cool mint tingles like playful fingertips.</div>
+      <div class="striker">💋 Trace mint drops on their lips.</div>
     </div>
   </div>
 
   <!-- Bites of Desire -->
   <button class="accordion">🍰 Bites of Desire</button>
   <div class="panel">
-    <div class="item">
+    <div class="item" data-price="180">
       <div class="item-title">Honeyed Fig Fantasy</div>
+      <div class="item-price">₹180</div>
       <div class="item-desc">Luscious fig glazed with golden honey.</div>
-      <div class="striker">💋 Striker: Feed one bite with closed eyes.</div>
+      <div class="striker">💋 Feed one bite with closed eyes.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Dark Chocolate Strawberry</div>
-      <div class="item-desc">Juicy strawberry dipped in rich dark chocolate.</div>
-      <div class="striker">💋 Striker: Share the first bite mouth-to-mouth.</div>
+    <div class="item" data-price="200">
+      <div class="item-title">Sinful Strawberry Shortcake</div>
+      <div class="item-price">₹200</div>
+      <div class="item-desc">Layers of sponge and whipped cream whisper your name.</div>
+      <div class="striker">💋 Share the same fork bite.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Raspberry Velvet Bite</div>
-      <div class="item-desc">Silky cake with a tangy raspberry swirl.</div>
-      <div class="striker">💋 Striker: Trace a heart on your partner’s lip.</div>
+    <div class="item" data-price="220">
+      <div class="item-title">Chocolate Lava Ecstasy</div>
+      <div class="item-price">₹220</div>
+      <div class="item-desc">Molten chocolate erupts with every slice.</div>
+      <div class="striker">💋 Drip sauce on their finger to lick.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Salted Caramel Sensation</div>
-      <div class="item-desc">Sweet meets salty in a molten center.</div>
-      <div class="striker">💋 Striker: Lick caramel off each other’s fingers.</div>
+    <div class="item" data-price="170">
+      <div class="item-title">Coconut Cream Caress</div>
+      <div class="item-price">₹170</div>
+      <div class="item-desc">Silky coconut drenches delicate biscuits.</div>
+      <div class="striker">💋 Blindfold and taste-test together.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Coconut Lace Cookie</div>
-      <div class="item-desc">Delicate crunch with tropical coconut flair.</div>
-      <div class="striker">💋 Striker: Whisper “tropical” into each other’s ear.</div>
+    <div class="item" data-price="190">
+      <div class="item-title">Bourbon Peach Seduction</div>
+      <div class="item-price">₹190</div>
+      <div class="item-desc">Juicy peaches soaked in smooth bourbon.</div>
+      <div class="striker">💋 Feed slice by slice, slowly.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Red Velvet Truffle</div>
-      <div class="item-desc">Cream cheese center wrapped in red velvet.</div>
-      <div class="striker">💋 Striker: Kiss with lips stained red.</div>
+    <div class="item" data-price="210">
+      <div class="item-title">Red Velvet Rendezvous</div>
+      <div class="item-price">₹210</div>
+      <div class="item-desc">Velvety cake that meets cream cheese dreams.</div>
+      <div class="striker">💋 Smear cream cheese on their nose.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Mango Tango Sorbet</div>
-      <div class="item-desc">Bright mango sherbet that wakes the palate.</div>
-      <div class="striker">💋 Striker: Feed spoonfuls with playful teasing.</div>
+    <div class="item" data-price="160">
+      <div class="item-title">Nutella Nibble Tease</div>
+      <div class="item-price">₹160</div>
+      <div class="item-desc">Hazelnut spread beckoning for a playful bite.</div>
+      <div class="striker">💋 Tease with a strawberry dip.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Rose Blossom Macaron</div>
-      <div class="item-desc">Fragrant rose petals in each delicate bite.</div>
-      <div class="striker">💋 Striker: Tuck a petal behind your partner’s ear.</div>
+    <div class="item" data-price="175">
+      <div class="item-title">Cherry Squeeze Delight</div>
+      <div class="item-price">₹175</div>
+      <div class="item-desc">Juicy cherries pop like little kisses.</div>
+      <div class="striker">💋 Pop a cherry in their mouth.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Spiced Pumpkin Mousse</div>
-      <div class="item-desc">Light mousse with autumnal spice notes.</div>
-      <div class="striker">💋 Striker: Trace spice shapes on bare skin.</div>
+    <div class="item" data-price="185">
+      <div class="item-title">Salted Caramel Surrender</div>
+      <div class="item-price">₹185</div>
+      <div class="item-desc">Sweet caramel and a hint of salt in perfect harmony.</div>
+      <div class="striker">💋 Brush salt on their lips first.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Blueberry Blush Tart</div>
-      <div class="item-desc">Sweet blueberries in a buttery tart shell.</div>
-      <div class="striker">💋 Striker: Brush a blueberry across your lips.</div>
+    <div class="item" data-price="195">
+      <div class="item-title">Pistachio Pillow Kiss</div>
+      <div class="item-price">₹195</div>
+      <div class="item-desc">Crunchy nuts nestled in dreamy pastry.</div>
+      <div class="striker">💋 Feed one bite with a gentle kiss.</div>
     </div>
   </div>
 
   <!-- Mood Starters -->
   <button class="accordion">💌 Mood Starters</button>
   <div class="panel">
-    <div class="item">
+    <div class="item" data-price="120">
       <div class="item-title">Candlelit Whisper</div>
+      <div class="item-price">₹120</div>
       <div class="item-desc">Dim lights and soft murmurs by candle glow.</div>
-      <div class="striker">💋 Striker: Whisper three things you adore.</div>
+      <div class="striker">💋 Whisper three things you adore.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Feather Tease</div>
-      <div class="item-desc">Gentle feather strokes along delicate skin.</div>
-      <div class="striker">💋 Striker: Trace a feather on the nape of the neck.</div>
+    <div class="item" data-price="130">
+      <div class="item-title">Feathered Tease</div>
+      <div class="item-price">₹130</div>
+      <div class="item-desc">Soft feathers tracing secret paths.</div>
+      <div class="striker">💋 Feather a kiss on their neck.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Blindfold Serenade</div>
-      <div class="item-desc">Soft song with eyes covered in sweet suspense.</div>
-      <div class="striker">💋 Striker: Sing your partner’s name in a lullaby.</div>
+    <div class="item" data-price="140">
+      <div class="item-title">Blindfolded Caress</div>
+      <div class="item-price">₹140</div>
+      <div class="item-desc">Sensations run wild without sight.</div>
+      <div class="striker">💋 Alternate touch with kisses.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Sensual Portrait</div>
-      <div class="item-desc">Paint each other’s faces in slow, playful strokes.</div>
-      <div class="striker">💋 Striker: Leave a kiss mark as your signature.</div>
+    <div class="item" data-price="150">
+      <div class="item-title">Serenade Under Sheets</div>
+      <div class="item-price">₹150</div>
+      <div class="item-desc">Soft song through tangled covers.</div>
+      <div class="striker">💋 Sing a love line softly.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Shared Bath Bubbles</div>
-      <div class="item-desc">Warm water, frothy bubbles, and soft touches.</div>
-      <div class="striker">💋 Striker: Lather each other with gentle suds.</div>
+    <div class="item" data-price="160">
+      <div class="item-title">Chocolate Body Paint</div>
+      <div class="item-price">₹160</div>
+      <div class="item-desc">Edible art for skin that craves touch.</div>
+      <div class="striker">💋 Paint a secret word on them.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Lingerie Fashion Show</div>
-      <div class="item-desc">Strut and pose in favorite intimate wear.</div>
-      <div class="striker">💋 Striker: Clap and cheer for every reveal.</div>
+    <div class="item" data-price="170">
+      <div class="item-title">Aphrodisiac Aroma Massage</div>
+      <div class="item-price">₹170</div>
+      <div class="item-desc">Scented oil evoking passion and warmth.</div>
+      <div class="striker">💋 Whisper a fantasy in their ear.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Slow Dance Twist</div>
-      <div class="item-desc">Hold close and sway to a sultry melody.</div>
-      <div class="striker">💋 Striker: Whisper your next move in their ear.</div>
+    <div class="item" data-price="130">
+      <div class="item-title">Whispered Fantasies</div>
+      <div class="item-price">₹130</div>
+      <div class="item-desc">Soft admissions that set hearts racing.</div>
+      <div class="striker">💋 Share a secret desire.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Love Letter Exchange</div>
-      <div class="item-desc">Pen heartfelt notes and read them aloud.</div>
-      <div class="striker">💋 Striker: Seal yours with a tender kiss.</div>
+    <div class="item" data-price="140">
+      <div class="item-title">Slow Dance in PJs</div>
+      <div class="item-price">₹140</div>
+      <div class="item-desc">Barefoot sway to your private playlist.</div>
+      <div class="striker">💋 Hold them close, no words.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Chocolate Body Art</div>
-      <div class="item-desc">Paint sweet designs on skin with melted chocolate.</div>
-      <div class="striker">💋 Striker: Taste your masterpiece slowly.</div>
+    <div class="item" data-price="135">
+      <div class="item-title">Ice Cube Trail</div>
+      <div class="item-price">₹135</div>
+      <div class="item-desc">Cool drops tracing electric lines.</div>
+      <div class="striker">💋 Glide ice over pulse points.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Stargazing Snuggle</div>
-      <div class="item-desc">Lay close under the night sky and share wishes.</div>
-      <div class="striker">💋 Striker: Make a wish and share it softly.</div>
+    <div class="item" data-price="155">
+      <div class="item-title">Warm Bath Ritual</div>
+      <div class="item-price">₹155</div>
+      <div class="item-desc">Steam and soft touches in glowing water.</div>
+      <div class="striker">💋 Feed them a soapy kiss.</div>
     </div>
   </div>
 
   <!-- Spicy Challenges -->
   <button class="accordion">🔮 Spicy Challenges</button>
   <div class="panel">
-    <div class="item">
+    <div class="item" data-price="100">
       <div class="item-title">Kiss Countdown</div>
+      <div class="item-price">₹100</div>
       <div class="item-desc">Ten kisses in ten seconds—can you keep pace?</div>
-      <div class="striker">💋 Striker: Start slow, finish in a frenzy.</div>
+      <div class="striker">💋 Start slow, finish in a frenzy.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Ice Cube Tease</div>
-      <div class="item-desc">Cool ice on warm skin for electrifying contrast.</div>
-      <div class="striker">💋 Striker: Trace slow paths from neck to wrist.</div>
+    <div class="item" data-price="110">
+      <div class="item-title">Blindfold Dares</div>
+      <div class="item-price">₹110</div>
+      <div class="item-desc">You won’t see what’s coming next.</div>
+      <div class="striker">💋 Alternate dares and kisses.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Roleplay Rendezvous</div>
-      <div class="item-desc">Meet as strangers and spark new desire.</div>
-      <div class="striker">💋 Striker: Create an alias and backstory.</div>
+    <div class="item" data-price="120">
+      <div class="item-title">Feather vs Ice Duel</div>
+      <div class="item-price">₹120</div>
+      <div class="item-desc">Tickle and chill—winner takes a kiss.</div>
+      <div class="striker">💋 Assign the first kiss to the winner.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Foot Massage Dare</div>
-      <div class="item-desc">Surprise foot rub that melts tension away.</div>
-      <div class="striker">💋 Striker: Use scented oil and gentle strokes.</div>
+    <div class="item" data-price="130">
+      <div class="item-title">Lipstick Love Letter</div>
+      <div class="item-price">₹130</div>
+      <div class="item-desc">Compose a message on skin with lipstick.</div>
+      <div class="striker">💋 Kiss off each letter.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Whisper Dare</div>
-      <div class="item-desc">Whisper a bold fantasy in a public area at home.</div>
-      <div class="striker">💋 Striker: Keep your voice just above a whisper.</div>
+    <div class="item" data-price="140">
+      <div class="item-title">Naughty Truth or Dare</div>
+      <div class="item-price">₹140</div>
+      <div class="item-desc">Secrets and dares get spicy real fast.</div>
+      <div class="striker">💋 Dare or kiss for skipping a question.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Truth or Dare X</div>
-      <div class="item-desc">Classic game, but with a seductive twist.</div>
-      <div class="striker">💋 Striker: Dare must involve touch.</div>
+    <div class="item" data-price="150">
+      <div class="item-title">Tease with a Teaspoon</div>
+      <div class="item-price">₹150</div>
+      <div class="item-desc">Tiny spoon, big sensations.</div>
+      <div class="striker">💋 Feed a drop to their lips blindfolded.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Strip Tease Spin</div>
-      <div class="item-desc">Spin a bottle to decide who strips first.</div>
-      <div class="striker">💋 Striker: Remove one item per spin.</div>
+    <div class="item" data-price="160">
+      <div class="item-title">Ice Kiss Roulette</div>
+      <div class="item-price">₹160</div>
+      <div class="item-desc">Cold tongue meets warm lips—spin to land.</div>
+      <div class="striker">💋 Spin and execute.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Temperature Play</div>
-      <div class="item-desc">Alternate hot and cold on sensitive spots.</div>
-      <div class="striker">💋 Striker: Use warm oil and an ice cube.</div>
+    <div class="item" data-price="170">
+      <div class="item-title">Ice & Fire Strip</div>
+      <div class="item-price">₹170</div>
+      <div class="item-desc">Alternate strip and ice kiss until finished.</div>
+      <div class="striker">💋 Remove an item of clothing each round.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Naughty Drawing</div>
-      <div class="item-desc">Draw playful shapes on each other’s skin.</div>
-      <div class="striker">💋 Striker: Only your lips can finish the design.</div>
+    <div class="item" data-price="180">
+      <div class="item-title">Naughty Poetry Recital</div>
+      <div class="item-price">₹180</div>
+      <div class="item-desc">Compose a sensual verse on the spot.</div>
+      <div class="striker">💋 Recite it in a sultry whisper.</div>
     </div>
-    <div class="item">
-      <div class="item-title">Chocolate Tasting Test</div>
-      <div class="item-desc">Blindfolded taste test of three chocolate types.</div>
-      <div class="striker">💋 Striker: Guess the flavor with a kiss.</div>
+    <div class="item" data-price="190">
+      <div class="item-title">Sexy Selfie Dare</div>
+      <div class="item-price">₹190</div>
+      <div class="item-desc">Snap a spicy selfie together.</div>
+      <div class="striker">💋 The best pic wins a kiss.</div>
     </div>
   </div>
 
-  <!-- Place Order Button -->
   <button id="placeOrderBtn">Place Order via WhatsApp</button>
+  <div id="orderSummary"></div>
 
   <script>
     // Accordion toggle
@@ -347,28 +431,53 @@
     document.querySelectorAll('.item').forEach(item => {
       const ctrl = document.createElement('div');
       ctrl.className = 'order-controls';
-      ctrl.innerHTML = '<label>Qty: <input type="number" min="0" value="0" class="qty-input"></label>';
+      ctrl.innerHTML = '<label>Qty: <input type="number" min="0" placeholder="0" class="qty-input"></label>';
+      const input = ctrl.querySelector('input');
+      input.addEventListener('focus', () => input.placeholder = '');
       item.appendChild(ctrl);
     });
 
-    // Place order to WhatsApp
+    // Place order
     document.getElementById('placeOrderBtn').addEventListener('click', () => {
+      const name = document.getElementById('customerName').value.trim();
+      if (!name) {
+        alert('Please enter your name before placing an order.');
+        return;
+      }
+
       const phone = '918950925182';
-      const lines = ['*Gappagap Café Order*'];
+      let total = 0;
+      const lines = [
+        '*Gappagap Café Order*',
+        `Name: ${name}`
+      ];
+
       document.querySelectorAll('.item').forEach(item => {
         const qty = parseInt(item.querySelector('.qty-input').value || '0', 10);
         if (qty > 0) {
-          const name = item.querySelector('.item-title').innerText.trim();
-          lines.push(`${qty} x ${name}`);
+          const title = item.querySelector('.item-title').innerText.trim();
+          const price = parseInt(item.dataset.price, 10);
+          total += price * qty;
+          lines.push(`${qty} x ${title} @ ₹${price}`);
         }
       });
-      if (lines.length === 1) {
-        alert('Please select at least one item to order.');
+
+      if (lines.length === 2) {
+        alert('Select at least one item to order.');
         return;
       }
+
+      lines.push(`*Total: ₹${total}*`);
+      lines.push('_Let’s heat up your evening 🔥💋_');
+
+      document.getElementById('orderSummary').innerHTML =
+        `<b>Order Summary:</b><br>${lines.slice(1).join('<br>')}`;
+
       const msg = encodeURIComponent(lines.join('\n'));
       window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     });
   </script>
+
 </body>
 </html>
+```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")
