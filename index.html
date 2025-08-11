@@ -1,45 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mate's Café of Love</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gappagap Café Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(to bottom, #8B0000, #FFC0CB);
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .accordion {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      outline: none;
+      padding: 15px;
+      width: 100%;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #FFD700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .accordion:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .panel {
+      padding: 0 15px;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.3);
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+    .item {
+      margin: 10px 0;
+    }
+    .item-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #fff;
+    }
+    .item-desc {
+      font-style: italic;
+      color: #FFD700;
+    }
+    .striker {
+      margin-top: 5px;
+      color: #FFC0CB;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Mate's Café of Love</h1>
-    <p>Where every sip feels like a kiss 💋</p>
-  </header>
+  <h1>Gappagap Café</h1>
 
-  <section class="menu">
-    <h2>Our Romantic Menu</h2>
-    <ul>
-      <li><strong>Heartfelt Espresso</strong> – ₹120</li>
-      <li><strong>Sweet Whisper Latte</strong> – ₹150</li>
-      <li><strong>Chocolate Embrace Cake</strong> – ₹200</li>
-      <li><strong>Rose Infused Tea</strong> – ₹130</li>
-    </ul>
-  </section>
+  <div class="section">
+    <button class="accordion">🍸 Sips of Seduction</button>
+    <div class="panel">
+      <div class="item">
+        <div class="item-title">Velvet Vanilla Tease</div>
+        <div class="item-desc">Creamy, slow, and suggestive.</div>
+        <div class="striker">💋 Striker: Whisper a compliment with every sip.</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Cinnamon Heatwave</div>
+        <div class="item-desc">Spicy and bold, like a stolen glance.</div>
+        <div class="striker">💋 Striker: Hold eye contact for 10 seconds.</div>
+      </div>
+      <!-- Add more drinks here -->
+    </div>
+  </div>
 
-  <section class="order">
-    <h2>Place Your Order</h2>
-    <form>
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required>
+  <div class="section">
+    <button class="accordion">🍰 Bites of Desire</button>
+    <div class="panel">
+      <div class="item">
+        <div class="item-title">Berry Tangle Tart</div>
+        <div class="item-desc">Juicy layers that invite fingers and laughter.</div>
+        <div class="striker">💋 Striker: Feed each other one bite.</div>
+      </div>
+      <!-- Add more desserts here -->
+    </div>
+  </div>
 
-      <label for="item">Menu Item:</label>
-      <input type="text" id="item" name="item" required>
+  <div class="section">
+    <button class="accordion">💌 Mood Starters</button>
+    <div class="panel">
+      <div class="item">
+        <div class="item-title">Mystery Menu</div>
+        <div class="item-desc">Let the café choose your pairing.</div>
+        <div class="striker">💋 Striker: Try something you’ve never ordered before.</div>
+      </div>
+      <!-- Add more experiences here -->
+    </div>
+  </div>
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" required>
+  <div class="section">
+    <button class="accordion">🔮 Spicy Challenges</button>
+    <div class="panel">
+      <div class="item">
+        <div class="item-title">The 3-Minute Flirt</div>
+        <div class="item-desc">Flirt non-stop for 3 minutes.</div>
+        <div class="striker">💋 Striker: Use only compliments and questions.</div>
+      </div>
+      <!-- Add more dares here -->
+    </div>
+  </div>
 
-      <button type="submit">Send My Love & Order 💌</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>Made with ❤️ by Mate</p>
-  </footer>
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
 </body>
 </html>
