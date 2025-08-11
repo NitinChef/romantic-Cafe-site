@@ -2,133 +2,332 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gappagap Café Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gappagap Café Spicy Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: 'Lato', sans-serif;
-      background: linear-gradient(to bottom, #8B0000, #FFC0CB);
-      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #330000, #660000, #000000);
+      color: #ffe6e6;
       padding: 20px;
+      line-height: 1.4;
     }
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.5em;
       text-align: center;
-      color: #FFD700;
-      margin-bottom: 10px;
-    }
-    .section {
+      font-size: 3em;
+      color: #ffd700;
+      position: relative;
       margin-bottom: 20px;
     }
+    /* Heart pulse in header */
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50%     { transform: scale(1.3); }
+    }
+    h1::after {
+      content: '❤️';
+      display: inline-block;
+      margin-left: 10px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    /* Accordion Buttons */
     .accordion {
-      background-color: rgba(255, 255, 255, 0.1);
-      border: none;
-      outline: none;
-      padding: 15px;
       width: 100%;
+      padding: 15px;
       text-align: left;
       font-size: 1.2em;
-      font-weight: bold;
-      color: #FFD700;
+      font-weight: 600;
+      background: rgba(255,255,255,0.05);
+      color: #ff3366;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
     }
     .accordion:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.15);
     }
+
+    /* Panel */
     .panel {
-      padding: 0 15px;
       display: none;
-      background-color: rgba(0, 0, 0, 0.3);
-      margin-top: 5px;
-      border-radius: 5px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
     }
+
+    /* Menu Items */
     .item {
-      margin: 10px 0;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.3s, border-left 0.3s;
+    }
+    .item:hover {
+      background: rgba(255,51,102,0.2);
+      border-left: 4px solid #ff3366;
     }
     .item-title {
-      font-weight: bold;
       font-size: 1.1em;
-      color: #fff;
+      font-weight: 600;
+      color: #ffeeee;
     }
     .item-desc {
       font-style: italic;
-      color: #FFD700;
+      color: #ffd700;
+      margin: 5px 0;
     }
     .striker {
-      margin-top: 5px;
-      color: #FFC0CB;
+      color: #ff99aa;
+      font-size: 0.9em;
+    }
+
+    /* Responsive Text */
+    @media (max-width: 480px) {
+      h1 { font-size: 2.5em; }
+      .accordion { font-size: 1em; }
+      .item-title { font-size: 1em; }
     }
   </style>
 </head>
 <body>
+
   <h1>Gappagap Café</h1>
 
-  <div class="section">
-    <button class="accordion">🍸 Sips of Seduction</button>
-    <div class="panel">
-      <div class="item">
-        <div class="item-title">Velvet Vanilla Tease</div>
-        <div class="item-desc">Creamy, slow, and suggestive.</div>
-        <div class="striker">💋 Striker: Whisper a compliment with every sip.</div>
-      </div>
-      <div class="item">
-        <div class="item-title">Cinnamon Heatwave</div>
-        <div class="item-desc">Spicy and bold, like a stolen glance.</div>
-        <div class="striker">💋 Striker: Hold eye contact for 10 seconds.</div>
-      </div>
-      <!-- Add more drinks here -->
+  <!-- Sips of Seduction -->
+  <button class="accordion">🍸 Sips of Seduction</button>
+  <div class="panel">
+    <div class="item">
+      <div class="item-title">Velvet Vanilla Tease</div>
+      <div class="item-desc">Creamy whispers of vanilla looping around your senses.</div>
+      <div class="striker">💋 Striker: Whisper a compliment with every sip.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Cinnamon Heatwave</div>
+      <div class="item-desc">Spicy and bold, like an unexpected embrace.</div>
+      <div class="striker">💋 Striker: Hold eye contact for 10 seconds.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Mocha Melted Mischief</div>
+      <div class="item-desc">Dark chocolate and coffee dancing slowly.</div>
+      <div class="striker">💋 Striker: Share one secret fantasy.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Cherry Blaze Fizz</div>
+      <div class="item-desc">Sweet cherry lip-lick with a fizzy twist.</div>
+      <div class="striker">💋 Striker: Kiss the rim before each sip.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Spiced Rose Latte</div>
+      <div class="item-desc">Floral hints that linger on your lips.</div>
+      <div class="striker">💋 Striker: Breathe in deeply and exhale on your partner’s neck.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Midnight Chocolate Kiss</div>
+      <div class="item-desc">Velvety chocolate that tastes like a stolen midnight kiss.</div>
+      <div class="striker">💋 Striker: Feed each other one drop.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Scarlet Spark Sangria</div>
+      <div class="item-desc">Fruity red glow in every glass.</div>
+      <div class="striker">💋 Striker: Toast with a slow clink of glasses.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Fiery Ginger Brew</div>
+      <div class="item-desc">A warm rush that tingles your senses.</div>
+      <div class="striker">💋 Striker: Brush lips on your partner’s ear.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Passionfruit Whisper</div>
+      <div class="item-desc">Tart meets sweet in a flirtatious swirl.</div>
+      <div class="striker">💋 Striker: Lean in and whisper one desire.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Cardamom Caress Cappuccino</div>
+      <div class="item-desc">Spiced warmth like a slow caress.</div>
+      <div class="striker">💋 Striker: Trace your partner’s name on the cup.</div>
     </div>
   </div>
 
-  <div class="section">
-    <button class="accordion">🍰 Bites of Desire</button>
-    <div class="panel">
-      <div class="item">
-        <div class="item-title">Berry Tangle Tart</div>
-        <div class="item-desc">Juicy layers that invite fingers and laughter.</div>
-        <div class="striker">💋 Striker: Feed each other one bite.</div>
-      </div>
-      <!-- Add more desserts here -->
+  <!-- Bites of Desire -->
+  <button class="accordion">🍰 Bites of Desire</button>
+  <div class="panel">
+    <div class="item">
+      <div class="item-title">Berry Tangle Tart</div>
+      <div class="item-desc">Juicy layers that invite playful fingers.</div>
+      <div class="striker">💋 Striker: Feed each other one bite.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Whipped Whimsy</div>
+      <div class="item-desc">Light cream with a mischievous twist.</div>
+      <div class="striker">💋 Striker: Say something naughty in a sweet voice.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Velvet Gazing Cake</div>
+      <div class="item-desc">Layers of chocolate and longing.</div>
+      <div class="striker">💋 Striker: Share a bite while gazing into eyes.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Dark Desire Brownies</div>
+      <div class="item-desc">Intensely chocolate, almost sinful.</div>
+      <div class="striker">💋 Striker: Break one piece and feed your partner.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Caramel Caress Crepes</div>
+      <div class="item-desc">Soft, sticky sweetness that clings.</div>
+      <div class="striker">💋 Striker: Run a warm finger through the caramel.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Raspberry Rapture Macarons</div>
+      <div class="item-desc">Delicate sweetness meets tart tease.</div>
+      <div class="striker">💋 Striker: Pop one into your partner’s mouth.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Honeyed Flame Panna Cotta</div>
+      <div class="item-desc">Silky cream drizzled in golden honey.</div>
+      <div class="striker">💋 Striker: Trace a honey heart on your partner’s palm.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Chili Chocolate Truffle</div>
+      <div class="item-desc">A slow burn after the sweet melt.</div>
+      <div class="striker">💋 Striker: Let it melt on your tongue.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Maple Seduction Donuts</div>
+      <div class="item-desc">Sticky, sweet, and oh-so tempting.</div>
+      <div class="striker">💋 Striker: Lick the donut together.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Sugared Velvet Strawberry Cup</div>
+      <div class="item-desc">Strawberries wrapped in sweet velvet sugar.</div>
+      <div class="striker">💋 Striker: Feed each other one strawberry.</div>
     </div>
   </div>
 
-  <div class="section">
-    <button class="accordion">💌 Mood Starters</button>
-    <div class="panel">
-      <div class="item">
-        <div class="item-title">Mystery Menu</div>
-        <div class="item-desc">Let the café choose your pairing.</div>
-        <div class="striker">💋 Striker: Try something you’ve never ordered before.</div>
-      </div>
-      <!-- Add more experiences here -->
+  <!-- Mood Starters -->
+  <button class="accordion">💌 Mood Starters</button>
+  <div class="panel">
+    <div class="item">
+      <div class="item-title">Mystery Menu</div>
+      <div class="item-desc">Let the café choose your pairing.</div>
+      <div class="striker">💋 Striker: Try something you’ve never ordered.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Love Note Add-On</div>
+      <div class="item-desc">Include a handwritten message.</div>
+      <div class="striker">💋 Striker: Write a compliment using only metaphors.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Candlelight Playlist</div>
+      <div class="item-desc">Soft tunes to set the mood.</div>
+      <div class="striker">💋 Striker: Dance close for one song.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Cozy Couple’s Quiz</div>
+      <div class="item-desc">Answer playful questions about each other.</div>
+      <div class="striker">💋 Striker: Reveal your favorite memory together.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Shared Secret Prompt</div>
+      <div class="item-desc">A question that sparks intimate talk.</div>
+      <div class="striker">💋 Striker: Whisper your answer softly.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Poetry Pair-Up</div>
+      <div class="item-desc">Write two lines of verse for your partner.</div>
+      <div class="striker">💋 Striker: Read it aloud while holding hands.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Blindfolded Taste Test</div>
+      <div class="item-desc">Guess flavors with eyes closed.</div>
+      <div class="striker">💋 Striker: Feed each other unexpected flavors.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Candle Carving Surprise</div>
+      <div class="item-desc">Carve a word in candle wax.</div>
+      <div class="striker">💋 Striker: Light it together and watch the glow.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Slow Dance Instruction</div>
+      <div class="item-desc">Step-by-step guide to a close dance.</div>
+      <div class="striker">💋 Striker: Sway in silence for one minute.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Sensual Sketch Session</div>
+      <div class="item-desc">Draw one another with eyes closed.</div>
+      <div class="striker">💋 Striker: Reveal your sketch and compliment.</div>
     </div>
   </div>
 
-  <div class="section">
-    <button class="accordion">🔮 Spicy Challenges</button>
-    <div class="panel">
-      <div class="item">
-        <div class="item-title">The 3-Minute Flirt</div>
-        <div class="item-desc">Flirt non-stop for 3 minutes.</div>
-        <div class="striker">💋 Striker: Use only compliments and questions.</div>
-      </div>
-      <!-- Add more dares here -->
+  <!-- Spicy Challenges -->
+  <button class="accordion">🔮 Spicy Challenges</button>
+  <div class="panel">
+    <div class="item">
+      <div class="item-title">The 3-Minute Flirt</div>
+      <div class="item-desc">Flirt non-stop for three minutes.</div>
+      <div class="striker">💋 Striker: Use only compliments and questions.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Touch & Tell</div>
+      <div class="item-desc">Describe a sensation using only touch.</div>
+      <div class="striker">💋 Striker: Trace one word on your partner’s arm.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Whisper Chain</div>
+      <div class="item-desc">Start a secret whisper that circles back.</div>
+      <div class="striker">💋 Striker: End with your favorite memory.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Kiss Countdown</div>
+      <div class="item-desc">Five kisses, each one different.</div>
+      <div class="striker">💋 Striker: Name each kiss as you give it.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Blindfold Dare</div>
+      <div class="item-desc">One partner blindfolded, the other guides.</div>
+      <div class="striker">💋 Striker: Lead them to a surprise touch.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Compliment Storm</div>
+      <div class="item-desc">Rapid-fire compliments for 30 seconds.</div>
+      <div class="striker">💋 Striker: Include a playful nickname.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Temperature Tease</div>
+      <div class="item-desc">Alternate hot and cold touches.</div>
+      <div class="striker">💋 Striker: Use ice or warm breath.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Roleplay Prompt</div>
+      <div class="item-desc">Pick a scenario and play it out.</div>
+      <div class="striker">💋 Striker: Stay in character for two minutes.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Kiss Map Game</div>
+      <div class="item-desc">Draw a map of secret kiss spots.</div>
+      <div class="striker">💋 Striker: Follow the map together.</div>
+    </div>
+    <div class="item">
+      <div class="item-title">Synchronized Breaths</div>
+      <div class="item-desc">Breathe together in perfect rhythm.</div>
+      <div class="striker">💋 Striker: End with a soft kiss.</div>
     </div>
   </div>
 
   <script>
-    const acc = document.querySelectorAll(".accordion");
-    acc.forEach(btn => {
-      btn.addEventListener("click", function () {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
+    document.querySelectorAll('.accordion').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
       });
     });
   </script>
+
 </body>
 </html>
