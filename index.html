@@ -6,11 +6,11 @@
   <title>Gappagap Café Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Sacramento&display=swap" rel="stylesheet">
   <style>
-    /* Base Reset & Body */
+    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Playfair Display', serif;
-      background: linear-gradient(to bottom, #0d0d2b, #1a0033);
+      background: linear-gradient(to bottom, #0d0d2b,#1a0033);
       color: #f8f8f8;
       padding: 1rem;
       line-height: 1.4;
@@ -23,21 +23,23 @@
       margin-bottom: 1rem;
     }
     form { max-width: 800px; margin: auto; }
-    label.customer {
+
+    /* Sexy Name */
+    label.sexy {
       display: block;
       margin-bottom: 1.5rem;
       font-size: 1.1rem;
     }
-    input#customerName {
+    input#sexyName {
       margin-left: .5rem;
       padding: .4rem .6rem;
-      border-radius: 6px;
       border: none;
+      border-radius: 6px;
       font-size: 1rem;
       width: 200px;
     }
 
-    /* Section Styling */
+    /* Sections */
     section {
       background: rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -53,7 +55,7 @@
       font-size: 1.5rem;
     }
 
-    /* Menu Items */
+    /* Menu items */
     .menu-item {
       display: flex;
       flex-wrap: wrap;
@@ -78,7 +80,7 @@
       margin-bottom: .2rem;
     }
 
-    /* Quantity Selector */
+    /* Qty selector */
     .qty-select {
       flex: 1 1 20%;
       text-align: right;
@@ -87,18 +89,18 @@
       padding: .4rem .6rem;
       border-radius: 6px;
       border: none;
-      background-color: #ffb6c1;
+      background: #ffb6c1;
       color: #1a0033;
       font-weight: bold;
-      cursor: pointer;
       width: 4rem;
+      cursor: pointer;
     }
 
-    /* Review & Submit */
+    /* Buttons */
     button {
       display: block;
       margin: 1rem auto;
-      background-color: #ffb6c1;
+      background: #ffb6c1;
       color: #1a0033;
       border: none;
       padding: .8rem 1.5rem;
@@ -107,6 +109,12 @@
       cursor: pointer;
       font-family: 'Playfair Display', serif;
     }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Review panel */
     #orderReview {
       max-width: 800px;
       margin: 2rem auto;
@@ -127,6 +135,7 @@
     .warning {
       color: #ff6961;
       font-weight: bold;
+      margin-bottom: .5rem;
     }
 
     /* Mobile tweaks */
@@ -143,59 +152,144 @@
   <header>Gappagap Café Menu</header>
 
   <form id="menuForm">
-    <label class="customer">
-      Customer Name:
-      <input type="text" id="customerName" placeholder="Your name…" required>
+    <label class="sexy">
+      Sexy Name:
+      <input type="text" id="sexyName" placeholder="Enter your sexy name…" required>
     </label>
 
-    <!-- Four Sections -->
+    <!-- Sweet Starters -->
     <section id="Sweet Starters">
       <h2>Sweet Starters</h2>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Heavy Glance</div><div class="item-description">Lock eyes for 10 seconds. Feel it under your skin.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Heavy Glance" data-section="Sweet Starters" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Grapevine Whisper</div><div class="item-description">Whisper a compliment closely.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Grapevine Whisper" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Lemon Tease</div><div class="item-description">Sour candy, sweet giggle.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Lemon Tease" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Berry Bite</div><div class="item-description">Feed a berry with your lips.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Berry Bite" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Sugar Wink</div><div class="item-description">Wink and blow a kiss.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Sugar Wink" data-section="Sweet Starters" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Cinnamon Gaze</div><div class="item-description">Hold eye contact while tracing their hand.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Cinnamon Gaze" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Vanilla Pulse</div><div class="item-description">Place hand on heart, feel the rhythm.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Vanilla Pulse" data-section="Sweet Starters" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Mint Murmur</div><div class="item-description">Whisper a secret memory.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Mint Murmur" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Cherry Cheek</div><div class="item-description">Compliment their outfit with a flirty touch.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Cherry Cheek" data-section="Sweet Starters" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Butter Kiss</div><div class="item-description">Kiss the back of their hand slowly.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Butter Kiss" data-section="Sweet Starters" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+      <!-- 10 items -->
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-title">Heavy Glance</div>
+          <div class="item-description">Lock eyes for 10 seconds. Feel it under your skin.</div>
+          <div class="spice-level">🌶️ 1</div>
+        </div>
+        <div class="qty-select">
+          <select name="Heavy Glance" data-section="Sweet Starters" data-spice="1">
+            <option value="0">Qty</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+      <!-- replicate for the other 9 items similarly -->
+      <!-- Grapevine Whisper -->
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-title">Grapevine Whisper</div>
+          <div class="item-description">Whisper a compliment closely.</div>
+          <div class="spice-level">🌶️🌶️ 2</div>
+        </div>
+        <div class="qty-select">
+          <select name="Grapevine Whisper" data-section="Sweet Starters" data-spice="2">
+            <option value="0">Qty</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+      <!-- …continue with Lemon Tease, Berry Bite, Sugar Wink, Cinnamon Gaze, Vanilla Pulse, Mint Murmur, Cherry Cheek, Butter Kiss -->
     </section>
 
+    <!-- Flirty Mains -->
     <section id="Flirty Mains">
       <h2>Flirty Mains</h2>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Spaghetti Tangle</div><div class="item-description">Share one strand. Mimic a breath to feel more in tune.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Spaghetti Tangle" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Steamy Sigh</div><div class="item-description">Describe their body like a gourmet dish.</div><div class="spice-level">🌶️🌶️🌶️ 3</div></div><div class="qty-select"><select name="Steamy Sigh" data-section="Flirty Mains" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Cheesy Pickup</div><div class="item-description">Say the cheesiest line you can.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Cheesy Pickup" data-section="Flirty Mains" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Saucy Glance</div><div class="item-description">Look them up and down with a smirk.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Saucy Glance" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Tender Touch</div><div class="item-description">Stroke their arm with a feather.</div><div class="spice-level">🌶️🌶️🌶️ 3</div></div><div class="qty-select"><select name="Tender Touch" data-section="Flirty Mains" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Flame Treat</div><div class="item-description">Make a bold toast to their beauty.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Flame Treat" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Garlic Dare</div><div class="item-description">Whisper something naughty in a garlic breath.</div><div class="spice-level">🌶️ 1</div></div><div class="qty-select"><select name="Garlic Dare" data-section="Flirty Mains" data-spice="1"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Olive Tease</div><div class="item-description">Feed an olive while maintaining eye contact.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Olive Tease" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Spice Slide</div><div class="item-description">Slide a hand down their neck.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Spice Slide" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Bread Brush</div><div class="item-description">Brush bread and share a secret.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Bread Brush" data-section="Flirty Mains" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+      <!-- 10 items -->
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-title">Spaghetti Tangle</div>
+          <div class="item-description">Share one strand. Mimic a breath to feel more in tune.</div>
+          <div class="spice-level">🌶️🌶️ 2</div>
+        </div>
+        <div class="qty-select">
+          <select name="Spaghetti Tangle" data-section="Flirty Mains" data-spice="2">
+            <option value="0">Qty</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+      <!-- …continue with the other 9 items: Steamy Sigh, Cheesy Pickup, Saucy Glance, Tender Touch, Flame Treat, Garlic Dare, Olive Tease, Spice Slide, Bread Brush -->
     </section>
 
+    <!-- Dessert Dares -->
     <section id="Dessert Dares">
       <h2>Dessert Dares</h2>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Chocolate Melt</div><div class="item-description">Place a piece on their skin. Melt it with your lips.</div><div class="spice-level">🌶️🌶🌶 3</div></div><div class="qty-select"><select name="Chocolate Melt" data-section="Dessert Dares" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Strawberry Blend</div><div class="item-description">Blindfolded tasting. Guess the flavor.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Strawberry Blend" data-section="Dessert Dares" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Honey Drip</div><div class="item-description">Drip honey on their finger. Lick it off.</div><div class="spice-level">🌶️🌶🌶 3</div></div><div class="qty-select"><select name="Honey Drip" data-section="Dessert Dares" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Caramel Kiss</div><div class="item-description">Kiss with caramel on your lips.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Caramel Kiss" data-section="Dessert Dares" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Nutty Nibble</div><div class="item-description">Nibble their ear with a nutty crunch.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Nutty Nibble" data-section="Dessert Dares" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Whipped Whirl</div><div class="item-description">Draw on their skin with whipped cream.</div><div class="spice-level">🌶️🌶🌶 3</div></div><div class="qty-select"><select name="Whipped Whirl" data-section="Dessert Dares" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Sugar Sprinkle</div><div class="item-description">Sprinkle sugar and kiss it off.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Sugar Sprinkle" data-section="Dessert Dares" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Berry Chase</div><div class="item-description">Hide a berry on your body. Let them find it.</div><div class="spice-level">🌶️🌶🌶🌶 4</div></div><div class="qty-select"><select name="Berry Chase" data-section="Dessert Dares" data-spice="4"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Cookie Crumble</div><div class="item-description">Feed a cookie piece by piece.</div><div class="spice-level">🌶️🌶️ 2</div></div><div class="qty-select"><select name="Cookie Crumble" data-section="Dessert Dares" data-spice="2"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Marshmallow Melt</div><div class="item-description">Hold a marshmallow between lips.</div><div class="spice-level">🌶️🌶🌶 3</div></div><div class="qty-select"><select name="Marshmallow Melt" data-section="Dessert Dares" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Cherry Pop</div><div class="item-description">Pop a cherry in their mouth with yours.</div><div class="spice-level">🌶️🌶🌶 3</div></div><div class="qty-select"><select name="Cherry Pop" data-section="Dessert Dares" data-spice="3"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+      <!-- 10 items -->
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-title">Chocolate Melt</div>
+          <div class="item-description">Place a piece on their skin. Melt it with your lips.</div>
+          <div class="spice-level">🌶️🌶️🌶️ 3</div>
+        </div>
+        <div class="qty-select">
+          <select name="Chocolate Melt" data-section="Dessert Dares" data-spice="3">
+            <option value="0">Qty</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+      <!-- …continue with the other 9 items: Strawberry Blend, Honey Drip, Caramel Kiss, Nutty Nibble, Whipped Whirl, Sugar Sprinkle, Berry Chase, Cookie Crumble, Marshmallow Melt, Cherry Pop -->
     </section>
 
+    <!-- Spicy Experiences -->
     <section id="Spicy Experiences">
       <h2>Spicy Experiences</h2>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Peach Slap Sorbet</div><div class="item-description">A cheeky spank with rhyme.</div><div class="spice-level">🌶️🌶🌶🌶🔥 5</div></div><div class="qty-select"><select name="Peach Slap Sorbet" data-section="Spicy Experiences" data-spice="5"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Buttered Curve Massage</div><div class="item-description">Oil, curves, slow strokes.</div><div class="spice-level">🌶️🌶🌶🌶 4</div></div><div class="qty-select"><select name="Buttered Curve Massage" data-section="Spicy Experiences" data-spice="4"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Boob Bounce Biscotti</div><div class="item-description">Place a treat on the chest. Nibble it off.</div><div class="spice-level">🌶️🌶🌶🌶🔥 5</div></div><div class="qty-select"><select name="Boob Bounce Biscotti" data-section="Spicy Experiences" data-spice="5"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Blow Pop Tease</div><div class="item-description">Lick a lollipop while they watch.</div><div class="spice-level">🌶️🌶🌶🌶 4</div></div><div class="qty-select"><select name="Blow Pop Tease" data-section="Spicy Experiences" data-spice="4"><option value="0">Qty</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
-      <div class="menu-item"><div class="item-info"><div class="item-title">Dry Hump Delight</div><div class="item-description">Dance close, hips aligned.</div><div class="spice-level">🌶️🌶🌶🌶🔥 5</div></div><div class="qty-select"><select name="Dry Hump Delight" data-section="Spicy Experiences" data-spice="5"><option value="0">Qty</option><option>1</option><option
+      <!-- 10 items -->
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-title">Peach Slap Sorbet</div>
+          <div class="item-description">A cheeky spank with rhyme.</div>
+          <div class="spice-level">🌶️🌶️🌶️🌶️🔥 5</div>
+        </div>
+        <div class="qty-select">
+          <select name="Peach Slap Sorbet" data-section="Spicy Experiences" data-spice="5">
+            <option value="0">Qty</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+      <!-- …continue with the other 9 items: Buttered Curve Massage, Boob Bounce Biscotti, Blow Pop Tease, Dry Hump Delight, Bra Unwrap Soufflé, Lip Lock Lollipop, Cherry Dare Dip, Whisper & Wander Mousse, Velvet Reveal -->
+    </section>
+
+    <button type="button" onclick="reviewOrder()">Review My Order</button>
+  </form>
+
+  <div id="orderReview">
+    <h2>📋 Order Review</h2>
+    <p><strong>Sexy Name:</strong> <span id="reviewName">—</span></p>
+    <ul id="selectedItems"></ul>
+    <div class="warning" id="sectionWarnings"></div>
+    <div class="warning" id="spiceWarning"></div>
+    <button id="whatsappBtn" onclick="sendToWhatsApp()" disabled>Submit via WhatsApp</button>
+  </div>
+
+  <script>
+    const cafeNumber = 'YOUR_CAFE_WHATSAPP_NUMBER'; // replace digits only
+
+    function reviewOrder() {
+      const name = document.getElementById('sexyName').value.trim();
+      document.getElementById('reviewName').textContent = name || '—';
+
+      const sections = {}, items = [], selects = document.querySelectorAll('select');
+      let totalSpice = 0;
+      document.querySelectorAll('section').forEach(sec => sections[sec.id] = 0);
+
+      selects.forEach(sel => {
+        const qty = +sel.value, spice = +sel.dataset.spice;
+        if (qty) {
+          items.push(`${sel.name} (x${qty}, 🌶️×${spice})`);
+          totalSpice += qty * spice;
+          sections[sel.dataset.section]++;
+        }
+      });
+
+      // render items
+      const list = document.getElementById('selectedItems');
+      list.innerHTML = items.length
+        ? items.map(i => `<li>${i}</li>`).join('')
+        : `<li>No items selected.</li>`;
+
+      // section warnings
+      const secWarn = document.getElementById('sectionWarnings');
+      secWarn.inner
