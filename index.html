@@ -1,483 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gappagap Café Spicy Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Gappagap Café</title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Reset & Base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* RESET & BASE */
+    * { box-sizing:border-box; margin:0; padding:0; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: 
-        url('https://www.transparenttextures.com/patterns/love-heart.png') repeat,
-        linear-gradient(135deg, #330000, #660000);
-      color: #ffe6e6;
-      padding: 20px;
-      line-height: 1.4;
+      font-family: 'Lato', sans-serif;
+      background:
+        #fff0f5
+        url('https://www.transparenttextures.com/patterns/lily-like.png') repeat;
+      color:#330000;
+      padding:20px;
+      line-height:1.5;
     }
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      text-align: center;
-      font-size: 3em;
-      color: #ffd700;
-      margin-bottom: 10px;
-      position: relative;
+
+    /* LOGO + TAGLINE */
+    .logo-area {
+      text-align:center;
+      margin-bottom:20px;
     }
-    @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.3); }
+    .logo-area .logo {
+      font-family:'Great Vibes', cursive;
+      font-size:3rem;
+      color:#c71585;
     }
-    h1::after {
-      content: '❤️';
-      display: inline-block;
-      margin-left: 10px;
-      animation: pulse 1.5s infinite ease-in-out;
+    .logo-area .tagline {
+      font-style:italic;
+      color:#8b008b;
+      margin-top:4px;
     }
+
+    /* CUSTOMER NAME */
     .user-info {
-      margin: 15px 0;
-      text-align: center;
+      text-align:center;
+      margin-bottom:20px;
     }
-    #customerName {
-      width: 80%;
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      text-align: center;
-      background: rgba(255,255,255,0.1);
-      color: #ffe6e6;
-      font-family: 'Poppins', sans-serif;
+    .user-info input {
+      width:80%;
+      max-width:300px;
+      padding:10px;
+      border:none;
+      border-radius:8px;
+      background:rgba(255,255,255,0.6);
+      font-size:1rem;
+      color:#330000;
+      text-align:center;
     }
-    #customerName::placeholder { color: #ffd700; }
+    .user-info input::placeholder { color:#8b008b; }
+
+    /* ACCORDION SECTIONS */
     .accordion {
-      width: 100%;
-      padding: 15px;
-      text-align: left;
-      font-size: 1.2em;
-      font-weight: 600;
-      background: rgba(255,255,255,0.05);
-      color: #ff3366;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
+      width:100%;
+      background:rgba(255,255,255,0.6);
+      border:none;
+      border-radius:6px;
+      padding:12px;
+      margin-top:10px;
+      font-family:'Great Vibes', cursive;
+      font-size:1.4rem;
+      color:#c71585;
+      cursor:pointer;
+      text-align:left;
+      transition:background 0.3s;
     }
-    .accordion:hover { background: rgba(255,255,255,0.15); }
+    .accordion:hover { background:rgba(255,255,255,0.8); }
+
     .panel {
-      display: none;
-      background: rgba(0,0,0,0.4);
-      border-radius: 8px;
-      padding: 10px 15px;
-      margin-bottom: 20px;
+      display:none;
+      background:rgba(255,240,245,0.8);
+      border-radius:6px;
+      margin-top:6px;
+      padding:12px;
     }
+
+    /* MENU ITEMS */
     .item {
-      position: relative;
-      padding: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.3s, border-left 0.3s;
+      position:relative;
+      padding:8px 0;
+      border-bottom:1px solid rgba(140,0,140,0.2);
     }
-    .item:hover {
-      background: rgba(255,51,102,0.2);
-      border-left: 4px solid #ff3366;
-    }
+    .item:last-child { border:none; }
     .item-title {
-      font-size: 1.1em;
-      font-weight: 600;
-      color: #ffeeee;
-    }
-    .item-price {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      color: #ffcccb;
-      font-weight: 600;
+      font-weight:700;
+      color:#4b0082;
+      font-size:1.1rem;
     }
     .item-desc {
-      font-style: italic;
-      color: #ffd700;
-      margin: 5px 0;
+      font-style:italic;
+      color:#8b008b;
+      margin:3px 0;
+    }
+    .item-spice {
+      position:absolute;
+      right:0; top:0;
+      font-size:1rem;
     }
     .striker {
-      color: #ff99aa;
-      font-size: 0.9em;
+      color:#c71585;
+      font-size:0.9rem;
     }
     .order-controls {
-      margin-top: 8px;
+      margin-top:6px;
     }
     .order-controls input {
-      width: 60px;
-      padding: 6px;
-      border-radius: 4px;
-      border: none;
-      outline: none;
-      font-size: 0.9em;
-      text-align: center;
-      background: rgba(255,255,255,0.1);
-      color: #ffe6e6;
+      width:50px;
+      padding:5px;
+      border:none;
+      border-radius:4px;
+      text-align:center;
+      background:rgba(255,255,255,0.6);
+      color:#330000;
+      font-size:0.9rem;
     }
-    .order-controls input::placeholder { color: #ffd700; }
+
+    /* PLACE ORDER */
     #placeOrderBtn {
-      width: 100%;
-      padding: 15px;
-      font-size: 1.2em;
-      background: #ff3366;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s;
+      width:100%;
+      margin-top:20px;
+      padding:15px;
+      font-size:1.2rem;
+      background:#c71585;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      transition:background 0.3s;
     }
-    #placeOrderBtn:hover { background: #e6004c; }
-    #orderSummary {
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      color: #ffe6e6;
+    #placeOrderBtn:hover { background:#a50f65; }
+
+    /* REVIEW BOX */
+    #orderReview {
+      display:none;
+      margin-top:20px;
+      padding:15px;
+      background:rgba(255,255,255,0.9);
+      color:#330000;
+      border-radius:8px;
     }
-    #orderSummary b { color: #ffd700; }
-    @media (max-width: 480px) {
-      h1 { font-size: 2.5em; }
-      .accordion { font-size: 1em; }
-      .item-title { font-size: 1em; }
+    #orderReview h3 {
+      font-family:'Great Vibes', cursive;
+      color:#c71585;
+      margin-bottom:10px;
+    }
+    #orderReview p { margin:4px 0; }
+    #orderReview .btn {
+      margin-top:10px;
+      padding:10px 15px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    #confirmBtn { background:#4b0082; color:white; }
+    #cancelBtn { background:#ddd; color:#330000; margin-left:10px; }
+
+    /* MOBILE TWEAKS */
+    @media(max-width:480px){
+      .logo-area .logo { font-size:2.2rem; }
+      .accordion { font-size:1.2rem; }
+      .item-title { font-size:1rem; }
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Gappagap Café</h1>
+  <!-- LOGO + TAGLINE -->
+  <div class="logo-area">
+    <div class="logo">Gappagap Café</div>
+    <div class="tagline">Place of Spicy Seduction</div>
+  </div>
+
+  <!-- CUSTOMER NAME -->
   <div class="user-info">
-    <input type="text" id="customerName" placeholder="Enter your name" />
+    <input id="customerName" type="text" placeholder="Enter your name"/>
   </div>
 
-  <!-- Sips of Seduction -->
-  <button class="accordion">🍸 Sips of Seduction</button>
+  <!-- MENU SECTIONS -->
+  <!-- 1. Starter -->
+  <button class="accordion">⭐ Starters</button>
   <div class="panel">
-    <div class="item" data-price="150">
-      <div class="item-title">Velvet Vanilla Tease</div>
-      <div class="item-price">₹150</div>
-      <div class="item-desc">Creamy whispers of vanilla looping around your senses.</div>
-      <div class="striker">💋 Whisper a compliment with every sip.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Petal Squeeze Salad</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Crisp greens tossed with rose petals.</div>
+      <div class="striker">Hold a petal in your mouth 'til it melts.</div>
     </div>
-    <div class="item" data-price="140">
-      <div class="item-title">Cinnamon Heatwave</div>
-      <div class="item-price">₹140</div>
-      <div class="item-desc">Spicy and bold, like an unexpected embrace.</div>
-      <div class="striker">💋 Hold eye contact for 10 seconds.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Blush Blossom Bites</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Soft dumplings drizzled in cherry glaze.</div>
+      <div class="striker">Blow a cherry-kissed breath on your partner.</div>
     </div>
-    <div class="item" data-price="160">
-      <div class="item-title">Raspberry Rapture</div>
-      <div class="item-price">₹160</div>
-      <div class="item-desc">Tart berries meet sweet syrup in a seductive swirl.</div>
-      <div class="striker">💋 Feed your partner a raspberry kiss.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Naughty Note Nibbler</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Edible wafer invites your secret message.</div>
+      <div class="striker">Feed it while whispering a desire.</div>
     </div>
-    <div class="item" data-price="170">
-      <div class="item-title">Spiced Mango Mirage</div>
-      <div class="item-price">₹170</div>
-      <div class="item-desc">Exotic mango with a hint of chili for a fiery twist.</div>
-      <div class="striker">💋 Trace a chili line on their wrist.</div>
+    <div class="item" data-spice="3">
+      <div class="item-title">Undress Dare Shooter</div>
+      <div class="item-spice">🌶️🌶️🌶️</div>
+      <div class="item-desc">Mini cocktail that dares you to remove one layer.</div>
+      <div class="striker">Cheers—and undress one item.</div>
     </div>
-    <div class="item" data-price="180">
-      <div class="item-title">Chocolate Chili Elixir</div>
-      <div class="item-price">₹180</div>
-      <div class="item-desc">Silky chocolate caressed by a spicy chili kick.</div>
-      <div class="striker">💋 Blow a warm breath on their neck.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Tingle Tempter Tart</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Cool mint tart that tingles your senses.</div>
+      <div class="striker">Trace mint foam along a pulse point.</div>
     </div>
-    <div class="item" data-price="155">
-      <div class="item-title">Strawberry Kiss Royale</div>
-      <div class="item-price">₹155</div>
-      <div class="item-desc">Fresh strawberries flirt with bubbly prosecco.</div>
-      <div class="striker">💋 Place a strawberry on their lips.</div>
-    </div>
-    <div class="item" data-price="145">
-      <div class="item-title">Caramel Caress Latte</div>
-      <div class="item-price">₹145</div>
-      <div class="item-desc">Sweet caramel swirls like a tender touch.</div>
-      <div class="striker">💋 Whisper a secret while sipping.</div>
-    </div>
-    <div class="item" data-price="165">
-      <div class="item-title">Passionfruit Pout</div>
-      <div class="item-price">₹165</div>
-      <div class="item-desc">Tropical tang with a sultry foam finish.</div>
-      <div class="striker">💋 Kiss their palm after each sip.</div>
-    </div>
-    <div class="item" data-price="175">
-      <div class="item-title">Mocha Midnight Whispers</div>
-      <div class="item-price">₹175</div>
-      <div class="item-desc">Dark coffee entwined with chocolate secrets.</div>
-      <div class="striker">💋 Share a slow, sensuous sip together.</div>
-    </div>
-    <div class="item" data-price="150">
-      <div class="item-title">Peppermint Pulse</div>
-      <div class="item-price">₹150</div>
-      <div class="item-desc">Cool mint tingles like playful fingertips.</div>
-      <div class="striker">💋 Trace mint drops on their lips.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Write Me a Message</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Edible paper for your spicy note.</div>
+      <div class="striker">Whisper while you eat your note.</div>
     </div>
   </div>
 
-  <!-- Bites of Desire -->
-  <button class="accordion">🍰 Bites of Desire</button>
+  <!-- 2. Appetizer -->
+  <button class="accordion">🍽️ Appetizers</button>
   <div class="panel">
-    <div class="item" data-price="180">
-      <div class="item-title">Honeyed Fig Fantasy</div>
-      <div class="item-price">₹180</div>
-      <div class="item-desc">Luscious fig glazed with golden honey.</div>
-      <div class="striker">💋 Feed one bite with closed eyes.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Touch & Tease Bruschetta</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Garlic-toast kissed with herb oil.</div>
+      <div class="striker">Brush the toast gently on lips.</div>
     </div>
-    <div class="item" data-price="200">
-      <div class="item-title">Sinful Strawberry Shortcake</div>
-      <div class="item-price">₹200</div>
-      <div class="item-desc">Layers of sponge and whipped cream whisper your name.</div>
-      <div class="striker">💋 Share the same fork bite.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Tender Curve Tease</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Soft cheese curls shaped for caresses.</div>
+      <div class="striker">Play a gentle stroke along curves.</div>
     </div>
-    <div class="item" data-price="220">
-      <div class="item-title">Chocolate Lava Ecstasy</div>
-      <div class="item-price">₹220</div>
-      <div class="item-desc">Molten chocolate erupts with every slice.</div>
-      <div class="striker">💋 Drip sauce on their finger to lick.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Tickling Tomato Tear</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Juicy tomato bite that bursts.</div>
+      <div class="striker">Feed and trace your partner’s heartbeat.</div>
     </div>
-    <div class="item" data-price="170">
-      <div class="item-title">Coconut Cream Caress</div>
-      <div class="item-price">₹170</div>
-      <div class="item-desc">Silky coconut drenches delicate biscuits.</div>
-      <div class="striker">💋 Blindfold and taste-test together.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Silken Cheese Plate</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Assorted cheeses to melt on your tongue.</div>
+      <div class="striker">Blindfold and feed each other.</div>
     </div>
-    <div class="item" data-price="190">
-      <div class="item-title">Bourbon Peach Seduction</div>
-      <div class="item-price">₹190</div>
-      <div class="item-desc">Juicy peaches soaked in smooth bourbon.</div>
-      <div class="striker">💋 Feed slice by slice, slowly.</div>
-    </div>
-    <div class="item" data-price="210">
-      <div class="item-title">Red Velvet Rendezvous</div>
-      <div class="item-price">₹210</div>
-      <div class="item-desc">Velvety cake that meets cream cheese dreams.</div>
-      <div class="striker">💋 Smear cream cheese on their nose.</div>
-    </div>
-    <div class="item" data-price="160">
-      <div class="item-title">Nutella Nibble Tease</div>
-      <div class="item-price">₹160</div>
-      <div class="item-desc">Hazelnut spread beckoning for a playful bite.</div>
-      <div class="striker">💋 Tease with a strawberry dip.</div>
-    </div>
-    <div class="item" data-price="175">
-      <div class="item-title">Cherry Squeeze Delight</div>
-      <div class="item-price">₹175</div>
-      <div class="item-desc">Juicy cherries pop like little kisses.</div>
-      <div class="striker">💋 Pop a cherry in their mouth.</div>
-    </div>
-    <div class="item" data-price="185">
-      <div class="item-title">Salted Caramel Surrender</div>
-      <div class="item-price">₹185</div>
-      <div class="item-desc">Sweet caramel and a hint of salt in perfect harmony.</div>
-      <div class="striker">💋 Brush salt on their lips first.</div>
-    </div>
-    <div class="item" data-price="195">
-      <div class="item-title">Pistachio Pillow Kiss</div>
-      <div class="item-price">₹195</div>
-      <div class="item-desc">Crunchy nuts nestled in dreamy pastry.</div>
-      <div class="striker">💋 Feed one bite with a gentle kiss.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Rosemary Wave Bites</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Herb-infused morsels that tease.</div>
+      <div class="striker">Trace a leaf on your partner’s neck.</div>
     </div>
   </div>
 
-  <!-- Mood Starters -->
-  <button class="accordion">💌 Mood Starters</button>
+  <!-- 3. Main Course -->
+  <button class="accordion">🍴 Main Menu</button>
   <div class="panel">
-    <div class="item" data-price="120">
-      <div class="item-title">Candlelit Whisper</div>
-      <div class="item-price">₹120</div>
-      <div class="item-desc">Dim lights and soft murmurs by candle glow.</div>
-      <div class="striker">💋 Whisper three things you adore.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Saffron Seduction Risotto</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Creamy saffron rice that glows.</div>
+      <div class="striker">Feed each other a single spoonful.</div>
     </div>
-    <div class="item" data-price="130">
-      <div class="item-title">Feathered Tease</div>
-      <div class="item-price">₹130</div>
-      <div class="item-desc">Soft feathers tracing secret paths.</div>
-      <div class="striker">💋 Feather a kiss on their neck.</div>
+    <div class="item" data-spice="3">
+      <div class="item-title">Spicy Plum Duck</div>
+      <div class="item-spice">🌶️🌶️🌶️</div>
+      <div class="item-desc">Rich duck in tangy plum glaze.</div>
+      <div class="striker">Share a slow tongue twirl.</div>
     </div>
-    <div class="item" data-price="140">
-      <div class="item-title">Blindfolded Caress</div>
-      <div class="item-price">₹140</div>
-      <div class="item-desc">Sensations run wild without sight.</div>
-      <div class="striker">💋 Alternate touch with kisses.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Garlic Caress Steak</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Tender steak brushed with garlic.</div>
+      <div class="striker">Feed a tender bite to your lover.</div>
     </div>
-    <div class="item" data-price="150">
-      <div class="item-title">Serenade Under Sheets</div>
-      <div class="item-price">₹150</div>
-      <div class="item-desc">Soft song through tangled covers.</div>
-      <div class="striker">💋 Sing a love line softly.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Truffle Whisper Pasta</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Earthy truffle in silky ribbons.</div>
+      <div class="striker">Close eyes, savor each bite.</div>
     </div>
-    <div class="item" data-price="160">
-      <div class="item-title">Chocolate Body Paint</div>
-      <div class="item-price">₹160</div>
-      <div class="item-desc">Edible art for skin that craves touch.</div>
-      <div class="striker">💋 Paint a secret word on them.</div>
-    </div>
-    <div class="item" data-price="170">
-      <div class="item-title">Aphrodisiac Aroma Massage</div>
-      <div class="item-price">₹170</div>
-      <div class="item-desc">Scented oil evoking passion and warmth.</div>
-      <div class="striker">💋 Whisper a fantasy in their ear.</div>
-    </div>
-    <div class="item" data-price="130">
-      <div class="item-title">Whispered Fantasies</div>
-      <div class="item-price">₹130</div>
-      <div class="item-desc">Soft admissions that set hearts racing.</div>
-      <div class="striker">💋 Share a secret desire.</div>
-    </div>
-    <div class="item" data-price="140">
-      <div class="item-title">Slow Dance in PJs</div>
-      <div class="item-price">₹140</div>
-      <div class="item-desc">Barefoot sway to your private playlist.</div>
-      <div class="striker">💋 Hold them close, no words.</div>
-    </div>
-    <div class="item" data-price="135">
-      <div class="item-title">Ice Cube Trail</div>
-      <div class="item-price">₹135</div>
-      <div class="item-desc">Cool drops tracing electric lines.</div>
-      <div class="striker">💋 Glide ice over pulse points.</div>
-    </div>
-    <div class="item" data-price="155">
-      <div class="item-title">Warm Bath Ritual</div>
-      <div class="item-price">₹155</div>
-      <div class="item-desc">Steam and soft touches in glowing water.</div>
-      <div class="striker">💋 Feed them a soapy kiss.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Rosy Embrace Chicken</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Rose-infused roast that seduces.</div>
+      <div class="striker">Hold hands while you dine.</div>
     </div>
   </div>
 
-  <!-- Spicy Challenges -->
-  <button class="accordion">🔮 Spicy Challenges</button>
+  <!-- 4. Drinks -->
+  <button class="accordion">🍷 Drinks</button>
   <div class="panel">
-    <div class="item" data-price="100">
-      <div class="item-title">Kiss Countdown</div>
-      <div class="item-price">₹100</div>
-      <div class="item-desc">Ten kisses in ten seconds—can you keep pace?</div>
-      <div class="striker">💋 Start slow, finish in a frenzy.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Cherry Blossom Elixir</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Floral sips with a cherry finish.</div>
+      <div class="striker">Sip and sway in each other’s arms.</div>
     </div>
-    <div class="item" data-price="110">
-      <div class="item-title">Blindfold Dares</div>
-      <div class="item-price">₹110</div>
-      <div class="item-desc">You won’t see what’s coming next.</div>
-      <div class="striker">💋 Alternate dares and kisses.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Velvet Vermouth</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Smooth vermouth with velvet notes.</div>
+      <div class="striker">Clink glasses slowly.</div>
     </div>
-    <div class="item" data-price="120">
-      <div class="item-title">Feather vs Ice Duel</div>
-      <div class="item-price">₹120</div>
-      <div class="item-desc">Tickle and chill—winner takes a kiss.</div>
-      <div class="striker">💋 Assign the first kiss to the winner.</div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Passion Peach Punch</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Fruity punch with peach zest.</div>
+      <div class="striker">Feed a sip to each other.</div>
     </div>
-    <div class="item" data-price="130">
-      <div class="item-title">Lipstick Love Letter</div>
-      <div class="item-price">₹130</div>
-      <div class="item-desc">Compose a message on skin with lipstick.</div>
-      <div class="striker">💋 Kiss off each letter.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Raspberry Romance Soda</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Bubbly soda with raspberry tease.</div>
+      <div class="striker">Put lip gloss, then sip.</div>
     </div>
-    <div class="item" data-price="140">
-      <div class="item-title">Naughty Truth or Dare</div>
-      <div class="item-price">₹140</div>
-      <div class="item-desc">Secrets and dares get spicy real fast.</div>
-      <div class="striker">💋 Dare or kiss for skipping a question.</div>
-    </div>
-    <div class="item" data-price="150">
-      <div class="item-title">Tease with a Teaspoon</div>
-      <div class="item-price">₹150</div>
-      <div class="item-desc">Tiny spoon, big sensations.</div>
-      <div class="striker">💋 Feed a drop to their lips blindfolded.</div>
-    </div>
-    <div class="item" data-price="160">
-      <div class="item-title">Ice Kiss Roulette</div>
-      <div class="item-price">₹160</div>
-      <div class="item-desc">Cold tongue meets warm lips—spin to land.</div>
-      <div class="striker">💋 Spin and execute.</div>
-    </div>
-    <div class="item" data-price="170">
-      <div class="item-title">Ice & Fire Strip</div>
-      <div class="item-price">₹170</div>
-      <div class="item-desc">Alternate strip and ice kiss until finished.</div>
-      <div class="striker">💋 Remove an item of clothing each round.</div>
-    </div>
-    <div class="item" data-price="180">
-      <div class="item-title">Naughty Poetry Recital</div>
-      <div class="item-price">₹180</div>
-      <div class="item-desc">Compose a sensual verse on the spot.</div>
-      <div class="striker">💋 Recite it in a sultry whisper.</div>
-    </div>
-    <div class="item" data-price="190">
-      <div class="item-title">Sexy Selfie Dare</div>
-      <div class="item-price">₹190</div>
-      <div class="item-desc">Snap a spicy selfie together.</div>
-      <div class="striker">💋 The best pic wins a kiss.</div>
+    <div class="item" data-spice="2">
+      <div class="item-title">Pink Pepper Margarita</div>
+      <div class="item-spice">🌶️🌶️</div>
+      <div class="item-desc">Margarita kissed by pink peppercorns.</div>
+      <div class="striker">Rim kiss before each drink.</div>
     </div>
   </div>
 
-  <button id="placeOrderBtn">Place Order via WhatsApp</button>
-  <div id="orderSummary"></div>
+  <!-- 5. Dessert -->
+  <button class="accordion">🍰 Desserts</button>
+  <div class="panel">
+    <div class="item" data-spice="1">
+      <div class="item-title">Crimson Velvet Cake</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Red velvet layers with cream cheese.</div>
+      <div class="striker">Share a frosting kiss.</div>
+    </div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Chocolate Lust Mousse</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Dark chocolate swirl in a cup.</div>
+      <div class="striker">Feed each other with a flourish.</div>
+    </div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Blushed Berry Parfait</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Layers of berries and whipped cream.</div>
+      <div class="striker">Hold spoon together.</div>
+    </div>
+    <div class="item" data-spice="1">
+      <div class="item-title">Cherry Blossom Sorbet</div>
+      <div class="item-spice">🌶️</div>
+      <div class="item-desc">Icy sorbet with cherry petals.</div>
+      <div class="striker">Trace a petal on lips.</div>
+    </div>
+    <div class="item" data-spice="3">
+      <div class="item-title">Fiery Cinnamon Crumble</div>
+      <div class="item-spice">🌶️🌶️🌶️</div>
+      <div class="item-desc">Warm crumble kissed by cinnamon heat.</div>
+      <div class="striker">Warm breath on their neck after each bite.</div>
+    </div>
+  </div>
+
+  <!-- PLACE ORDER -->
+  <button id="placeOrderBtn">Review Your Order</button>
+
+  <!-- ORDER REVIEW -->
+  <div id="orderReview">
+    <h3>Review & Confirm</h3>
+    <div id="reviewLines"></div>
+    <button id="confirmBtn" class="btn">Confirm & Send</button>
+    <button id="cancelBtn" class="btn">Cancel</button>
+  </div>
 
   <script>
     // Accordion toggle
     document.querySelectorAll('.accordion').forEach(btn => {
       btn.addEventListener('click', () => {
-        const panel = btn.nextElementSibling;
-        panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        let p = btn.nextElementSibling;
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
       });
     });
 
-    // Add quantity inputs
+    // Add qty inputs
     document.querySelectorAll('.item').forEach(item => {
-      const ctrl = document.createElement('div');
+      let ctrl = document.createElement('div');
       ctrl.className = 'order-controls';
-      ctrl.innerHTML = '<label>Qty: <input type="number" min="0" placeholder="0" class="qty-input"></label>';
-      const input = ctrl.querySelector('input');
+      ctrl.innerHTML = 'Qty: <input type="number" min="0" placeholder="0" class="qty-input"/>';
+      let input = ctrl.querySelector('input');
       input.addEventListener('focus', () => input.placeholder = '');
       item.appendChild(ctrl);
     });
 
-    // Place order
+    // Review order
     document.getElementById('placeOrderBtn').addEventListener('click', () => {
-      const name = document.getElementById('customerName').value.trim();
+      let name = document.getElementById('customerName').value.trim();
       if (!name) {
-        alert('Please enter your name before placing an order.');
-        return;
+        return alert('Please enter your name.');
       }
 
-      const phone = '918950925182';
-      let total = 0;
-      const lines = [
-        '*Gappagap Café Order*',
-        `Name: ${name}`
-      ];
+      let lines = [`*Gappagap Café Order*`, `Name: ${name}`];
+      let totalItems = 0;
 
       document.querySelectorAll('.item').forEach(item => {
-        const qty = parseInt(item.querySelector('.qty-input').value || '0', 10);
-        if (qty > 0) {
-          const title = item.querySelector('.item-title').innerText.trim();
-          const price = parseInt(item.dataset.price, 10);
-          total += price * qty;
-          lines.push(`${qty} x ${title} @ ₹${price}`);
+        let qty = parseInt(item.querySelector('.qty-input').value || '0',10);
+        if (qty>0) {
+          totalItems += qty;
+          let title = item.querySelector('.item-title').innerText;
+          let spice = '🌶️'.repeat(item.dataset.spice);
+          lines.push(`${qty}× ${title} [${spice}]`);
         }
       });
 
-      if (lines.length === 2) {
-        alert('Select at least one item to order.');
-        return;
+      if (totalItems===0) {
+        return alert('Select at least one item.');
       }
 
-      lines.push(`*Total: ₹${total}*`);
-      lines.push('_Let’s heat up your evening 🔥💋_');
+      lines.push(`*Items total: ${totalItems}*`);
+      lines.push('_Get ready for a sizzling night! 🔥💋_');
 
-      document.getElementById('orderSummary').innerHTML =
-        `<b>Order Summary:</b><br>${lines.slice(1).join('<br>')}`;
+      // Populate review box
+      document.getElementById('reviewLines').innerHTML = lines.slice(1).map(l => `<p>${l}</p>`).join('');
+      document.getElementById('orderReview').style.display = 'block';
+      // Scroll into view
+      document.getElementById('orderReview').scrollIntoView({behavior:'smooth'});
+    });
 
-      const msg = encodeURIComponent(lines.join('\n'));
-      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+    // Cancel review
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+      document.getElementById('orderReview').style.display = 'none';
+    });
+
+    // Confirm & send
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+      let phone = '918950925182';
+      let text = encodeURIComponent(
+        document.getElementById('reviewLines').innerText
+          .split('\n')
+          .map(line => line.trim())
+          .filter(l => l)
+          .join('\n')
+      );
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     });
   </script>
 
 </body>
 </html>
-```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")
