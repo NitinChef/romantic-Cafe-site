@@ -1,351 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Gappagap Café</title>
-
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <title>Gappagap Café Menu</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
-    /* RESET & BASE */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Boudoir Velvet Theme */
     body {
-      font-family: 'Lato', sans-serif;
-      /* Dark velvet gradient + subtle linen texture */
-      background:
-        linear-gradient(135deg, #240046, #3C096C),
-        url('https://www.transparenttextures.com/patterns/black-linen.png') center/cover;
-      background-blend-mode: multiply;
-      color: #F8F8FF;
-      padding: 20px;
-      line-height: 1.5;
+      margin: 0;
+      padding: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #4A0000 url('velvet-texture.jpg') center/cover;
+      color: #FFF5E1;
+      font-family: 'Dancing Script', cursive;
+      line-height: 1.6;
     }
 
-    /* LOGO + TAGLINE */
-    .logo-area {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .logo-area .logo {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #E0AFFF;
-    }
-    .logo-area .tagline {
-      font-style: italic;
-      color: #FFA0A0;
-      margin-top: 4px;
-    }
-
-    /* CUSTOMER NAME */
-    .user-info {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .user-info input {
-      width: 80%;
-      max-width: 300px;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.1);
-      color: #F8F8FF;
-      font-size: 1rem;
+    h1, h2 {
+      margin: 0 0 20px;
+      font-family: 'Playfair Display', serif;
+      color: #FFD700;
+      text-shadow: 0 0 5px rgba(255,215,0,0.6);
       text-align: center;
     }
-    .user-info input::placeholder {
-      color: #FFA0A0;
+
+    p.subtitle {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1em;
     }
 
-    /* ACCORDION SECTIONS */
-    .accordion {
-      width: 100%;
-      background: rgba(60,9,100,0.8);
-      border: none;
-      border-radius: 6px;
-      padding: 14px;
-      margin-top: 12px;
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.5rem;
-      color: #E0AFFF;
-      cursor: pointer;
-      text-align: left;
-      transition: background 0.3s;
-    }
-    .accordion:hover {
-      background: rgba(60,9,100,0.95);
-    }
-    .panel {
-      display: none;
-      background: rgba(15,0,20,0.7);
-      border-radius: 6px;
-      margin-top: 6px;
-      padding: 12px;
+    .section {
+      margin-bottom: 50px;
     }
 
-    /* MENU ITEMS */
     .item {
-      position: relative;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(224,175,255,0.2);
+      padding: 12px 16px;
+      margin: 10px 0;
+      background: rgba(255,245,225,0.9);
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .item:last-child {
-      border: none;
+
+    .item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(255,215,0,0.4);
     }
-    .item-title {
-      font-weight: 700;
-      color: #F8F8FF;
-      font-size: 1.1rem;
+
+    .item strong {
+      display: inline-block;
+      min-width: 160px;
     }
-    .item-desc {
-      font-style: italic;
-      color: #E0AFFF;
-      margin: 4px 0;
-    }
-    .item-spice {
-      position: absolute;
-      right: 0; top: 0;
-      font-size: 1rem;
-    }
-    .striker {
-      color: #FFA0A0;
-      font-size: 0.9rem;
-    }
-    .order-controls {
-      margin-top: 6px;
-    }
-    .order-controls input {
-      width: 50px;
-      padding: 6px;
-      border: none;
+
+    select {
+      margin-left: 20px;
+      padding: 4px 8px;
+      border: 1px solid #FFD700;
       border-radius: 4px;
-      text-align: center;
-      background: rgba(255,255,255,0.1);
-      color: #F8F8FF;
-      font-size: 0.9rem;
-    }
-    .order-controls input::placeholder {
-      color: #FFA0A0;
+      background: #FFF5E1;
+      color: #4A2E2E;
+      font-family: inherit;
     }
 
-    /* PLACE ORDER */
-    #placeOrderBtn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 15px;
-      font-size: 1.2rem;
-      background: #5A189A;
-      color: #F8F8FF;
+    button {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #FFD700;
+      color: #4A2E2E;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    #placeOrderBtn:hover {
-      background: #7B2CBF;
-    }
-
-    /* REVIEW BOX */
-    #orderReview {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(255,255,255,0.05);
-      color: #F8F8FF;
-      border-radius: 8px;
-    }
-    #orderReview h3 {
-      font-family: 'Great Vibes', cursive;
-      color: #E0AFFF;
-      margin-bottom: 10px;
-    }
-    #orderReview p {
-      margin: 4px 0;
-    }
-    #orderReview .btn {
-      margin-top: 10px;
-      padding: 10px 15px;
-      border: none;
+      padding: 12px 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1em;
       border-radius: 6px;
       cursor: pointer;
-      font-weight: 700;
-    }
-    #confirmBtn {
-      background: #3C096C;
-      color: #F8F8FF;
-    }
-    #cancelBtn {
-      background: rgba(255,255,255,0.2);
-      color: #F8F8FF;
-      margin-left: 10px;
+      transition: background 0.3s ease;
     }
 
-    /* MOBILE TWEAKS */
-    @media(max-width:480px){
-      .logo-area .logo {
-        font-size: 2.2rem;
-      }
-      .accordion {
-        font-size: 1.2rem;
-      }
-      .item-title {
-        font-size: 1rem;
-      }
+    button:hover {
+      background-color: #E6C300;
+    }
+
+    #orderReview {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255,245,225,0.9);
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+    }
+
+    #orderReview h2 {
+      margin-top: 0;
+    }
+
+    #selectedItems {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .warning {
+      color: #d00000;
+      font-weight: bold;
+      margin-top: 15px;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- LOGO + TAGLINE -->
-  <div class="logo-area">
-    <div class="logo">Gappagap Café</div>
-    <div class="tagline">Place of Spicy Seduction</div>
-  </div>
+  <h1>💞 Gappagap Café Menu 💞</h1>
+  <p class="subtitle">
+    A private tasting menu for married & soon-to-be married lovers—served with 
+    velvet textures, golden accents, and pulses of desire. Choose wisely.  
+    Some bites may break your bed.
+  </p>
 
-  <!-- CUSTOMER NAME -->
-  <div class="user-info">
-    <input id="customerName" type="text" placeholder="Enter your sexy name"/>
-  </div>
+  <form id="menuForm">
+    <div id="menuSections"></div>
+    <button type="button" onclick="reviewOrder()">Review My Order</button>
+  </form>
 
-  <!-- MENU SECTIONS -->
-
-  <!-- 1. Starters -->
-  <button class="accordion">⭐ Starters</button>
-  <div class="panel">
-    <!-- replicate up to 6–8 items as needed -->
-    <div class="item" data-spice="2">
-      <div class="item-title">Blush Blossom Bites</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Dumplings drizzled with cherry glaze.</div>
-      <div class="striker">Blow a cherry-kissed breath on your partner.</div>
-    </div>
-    <div class="item" data-spice="3">
-      <div class="item-title">Undress Dare Shooter</div>
-      <div class="item-spice">🌶️🌶️🌶️</div>
-      <div class="item-desc">Mini cocktail that dares you to remove one layer.</div>
-      <div class="striker">Cheers—and undress one item.</div>
-    </div>
-    <!-- …add 4 more… -->
-  </div>
-
-  <!-- 2. Appetizers -->
-  <button class="accordion">🍽️ Appetizers</button>
-  <div class="panel">
-    <div class="item" data-spice="2">
-      <div class="item-title">Tickling Tomato Tear</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Juicy tomato that bursts on your tongue.</div>
-      <div class="striker">Feed and trace pulse points.</div>
-    </div>
-    <!-- …add 4 more… -->
-  </div>
-
-  <!-- 3. Main Menu -->
-  <button class="accordion">🍴 Main Menu</button>
-  <div class="panel">
-    <div class="item" data-spice="3">
-      <div class="item-title">Spicy Plum Duck</div>
-      <div class="item-spice">🌶️🌶️🌶️</div>
-      <div class="item-desc">Rich duck in tangy plum glaze.</div>
-      <div class="striker">Share a slow tongue twirl.</div>
-    </div>
-    <!-- …add 4 more… -->
-  </div>
-
-  <!-- 4. Drinks -->
-  <button class="accordion">🍷 Drinks</button>
-  <div class="panel">
-    <div class="item" data-spice="1">
-      <div class="item-title">Cherry Blossom Elixir</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Floral sips with a cherry finish.</div>
-      <div class="striker">Sip and sway in each other’s arms.</div>
-    </div>
-    <!-- …add 4 more… -->
-  </div>
-
-  <!-- 5. Desserts -->
-  <button class="accordion">🍰 Desserts</button>
-  <div class="panel">
-    <div class="item" data-spice="3">
-      <div class="item-title">Fiery Cinnamon Crumble</div>
-      <div class="item-spice">🌶️🌶️🌶️</div>
-      <div class="item-desc">Warm crumble kissed by cinnamon heat.</div>
-      <div class="striker">Warm breath on their neck after each bite.</div>
-    </div>
-    <!-- …add 4 more… -->
-  </div>
-
-  <!-- PLACE ORDER -->
-  <button id="placeOrderBtn">Review Your Order</button>
-
-  <!-- ORDER REVIEW -->
   <div id="orderReview">
-    <h3>Review & Confirm</h3>
-    <div id="reviewLines"></div>
-    <button id="confirmBtn" class="btn">Confirm &amp; Send</button>
-    <button id="cancelBtn" class="btn">Cancel</button>
+    <h2>📋 Your Selected Items</h2>
+    <ul id="selectedItems"></ul>
+    <div class="warning" id="spiceWarning"></div>
   </div>
 
   <script>
-    // Toggle accordions
-    document.querySelectorAll('.accordion').forEach(btn =>
-      btn.addEventListener('click', () => {
-        const p = btn.nextElementSibling;
-        p.style.display = p.style.display === 'block' ? 'none' : 'block';
-      })
-    );
+    const menuData = {
+      "Sweet Starters": [
+        ["Honey Glance", "Lock eyes for 10 seconds. First to smile owes a kiss.", 1],
+        ["Grapevine Whisper", "Whisper a compliment slowly.", 2],
+        ["Lemon Tease", "Sour candy, sweet giggle.", 1],
+        ["Berry Bite", "Feed a berry with your lips.", 2],
+        ["Sugar Wink", "Wink and blow a kiss.", 1],
+        ["Cinnamon Gaze", "Hold eye contact while tracing their hand.", 2],
+        ["Vanilla Pulse", "Place hand on heart, feel the rhythm.", 1],
+        ["Mint Murmur", "Whisper a secret memory.", 2],
+        ["Cherry Check", "Compliment their outfit with a flirty twist.", 1],
+        ["Butter Kiss", "Kiss the back of their hand slowly.", 2]
+      ],
+      "Flirty Mains": [
+        ["Spaghetti Tangle", "Share one strand. Whoever breaks it first owes a dare.", 2],
+        ["Steamy Sizzle", "Describe their body like a gourmet dish.", 3],
+        ["Cheesy Pickup", "Say the cheesiest line you can.", 2],
+        ["Saucy Glance", "Look them up and down with a smirk.", 2],
+        ["Tender Touch", "Stroke their arm with a feather.", 3],
+        ["Flame Toast", "Make a bold toast to their beauty.", 2],
+        ["Garlic Dare", "Whisper something naughty in a garlic breath.", 3],
+        ["Olive Tease", "Feed an olive while maintaining eye contact.", 2],
+        ["Spice Slide", "Slide a treat down their neck.", 3],
+        ["Bread Break", "Break bread and share a secret.", 2]
+      ],
+      "Dessert Dares": [
+        ["Chocolate Melt", "Place a piece on their skin. Melt it with your lips.", 3],
+        ["Strawberry Blind", "Blindfolded tasting. Guess the flavor.", 2],
+        ["Ice Cream Duel", "Lick the same cone from opposite sides.", 3],
+        ["Whipped Whirl", "Draw on their skin with whipped cream.", 3],
+        ["Sugar Sprinkle", "Sprinkle sugar and kiss it off.", 2],
+        ["Berry Chase", "Hide a berry on your body. Let them find it.", 4],
+        ["Cookie Crumble", "Feed a cookie piece by piece.", 2],
+        ["Marshmallow Melt", "Hold a marshmallow between lips.", 3],
+        ["Fudge Flick", "Flick fudge playfully on their cheek.", 2],
+        ["Cherry Pop", "Pop a cherry in their mouth with yours.", 3]
+      ],
+      "Spicy Experiences": [
+        ["Peach Slap Sorbet", "A cheeky spank with rhyme.", 5],
+        ["Buttered Curve Massage", "Oil, curves, slow strokes.", 4],
+        ["Boob Bounce Biscotti", "Place a treat on the chest. Nibble it off.", 5],
+        ["Blow Pop Tease", "Lick a lollipop while they watch.", 4],
+        ["Dry Hump Delight", "Dance close, hips aligned.", 5],
+        ["Bra Unwrap Soufflé", "Unhook with one hand. Fail? Kiss owed.", 4],
+        ["Lip Lock Lollipop", "Hold a lollipop between lips. No hands.", 4],
+        ["Cherry Dare Dip", "Blindfolded cherry feeding.", 5],
+        ["Whisper & Wander Mousse", "Whisper fantasy while tracing body.", 4],
+        ["Velvet Reveal", "Slowly remove one layer of clothing.", 5]
+      ]
+    };
 
-    // Add quantity inputs
-    document.querySelectorAll('.item').forEach(item => {
-      const ctrl = document.createElement('div');
-      ctrl.className = 'order-controls';
-      ctrl.innerHTML = 'Qty: <input type="number" min="0" placeholder="0" class="qty-input"/>';
-      const inp = ctrl.querySelector('input');
-      inp.addEventListener('focus', () => inp.placeholder = '');
-      item.appendChild(ctrl);
-    });
+    const container = document.getElementById('menuSections');
 
-    // Review button
-    document.getElementById('placeOrderBtn').addEventListener('click', () => {
-      const name = document.getElementById('customerName').value.trim();
-      if (!name) return alert('Enter your sexy Name');
-      const lines = [`Gappagap Café Order`, `Name: ${name}`];
-      let count=0;
+    for (let [section, items] of Object.entries(menuData)) {
+      let secDiv = document.createElement('div');
+      secDiv.className = 'section';
+      secDiv.innerHTML = `<h2>${section}</h2>`;
+      items.forEach(([name, desc, spice]) => {
+        let itemDiv = document.createElement('div');
+        itemDiv.className = 'item';
+        itemDiv.innerHTML = `
+          <strong>${name}</strong> — ${desc} 🌶️ x${spice}
+          <select name="${name}" data-spice="${spice}">
+            <option value="0">Qty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        `;
+        secDiv.appendChild(itemDiv);
+      });
+      container.appendChild(secDiv);
+    }
 
-      document.querySelectorAll('.item').forEach(it => {
-        const q = parseInt(it.querySelector('.qty-input').value||'0',10);
-        if (q>0) {
-          count+=q;
-          const t = it.querySelector('.item-title').innerText;
-          const spice = '🌶️'.repeat(it.dataset.spice);
-          lines.push(`${q}× ${t} [${spice}]`);
+    function reviewOrder() {
+      const selectedList = document.getElementById('selectedItems');
+      const warningBox = document.getElementById('spiceWarning');
+      selectedList.innerHTML = '';
+      warningBox.innerHTML = '';
+
+      let totalSpice = 0;
+      let sectionCounts = {};
+      Object.keys(menuData).forEach(sec => sectionCounts[sec] = 0);
+
+      document.querySelectorAll('select').forEach(select => {
+        let qty = parseInt(select.value);
+        let spice = parseInt(select.dataset.spice);
+        let name = select.name;
+
+        if (qty > 0) {
+          selectedList.innerHTML += `<li>${name} — Qty: ${qty}, Spiciness: 🌶️ x${spice}</li>`;
+          totalSpice += qty * spice;
+
+          for (let sec of Object.keys(menuData)) {
+            if (menuData[sec].some(item => item[0] === name)) {
+              sectionCounts[sec] += 1;
+            }
+          }
         }
       });
 
-      if (!count) return alert('Select at least one item.');
-      lines.push(`Total items: ${count}`);
-      lines.push('Prepare for a wild, spicy night! 🔥💋');
+      for (let [sec, count] of Object.entries(sectionCounts)) {
+        if (count < 5 || count > 10) {
+          warningBox.innerHTML += `⚠️ ${sec}: Select between 5 and 10 items.<br>`;
+        }
+      }
 
-      document.getElementById('reviewLines').innerHTML =
-        lines.slice(1).map(l=>`<p>${l}</p>`).join('');
-      document.getElementById('orderReview').style.display='block';
-    });
-
-    // Cancel & Confirm
-    document.getElementById('cancelBtn').addEventListener('click', () =>
-      document.getElementById('orderReview').style.display='none'
-    );
-    document.getElementById('confirmBtn').addEventListener('click', () => {
-      const phone = '918950925182';
-      const text = encodeURIComponent(
-        document.getElementById('reviewLines').innerText
-      );
-      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-    });
+      if (totalSpice >= 40) {
+        warningBox.innerHTML += "🔥 Bed-breaking intensity detected. Cancel your meetings. Hydrate. Stretch.";
+      } else if (totalSpice >= 30) {
+        warningBox.innerHTML += "🔥 May delay deadlines and melt your clothes.";
+      } else if (totalSpice >= 20) {
+        warningBox.innerHTML += "🔥 Flirty fire ahead. You might need a nap after dessert.";
+      } else {
+        warningBox.innerHTML += "💗 Sweet enough to stir butterflies. You’ll still make it to work.";
+      }
+    }
   </script>
+
 </body>
 </html>
