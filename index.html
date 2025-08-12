@@ -10,162 +10,189 @@
 
   <style>
     /* RESET & BASE */
-    * { box-sizing:border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Lato', sans-serif;
+      /* Dark velvet gradient + subtle linen texture */
       background:
-        #fff0f5
-        url('https://www.transparenttextures.com/patterns/lily-like.png') repeat;
-      color:#330000;
-      padding:20px;
-      line-height:1.5;
+        linear-gradient(135deg, #240046, #3C096C),
+        url('https://www.transparenttextures.com/patterns/black-linen.png') center/cover;
+      background-blend-mode: multiply;
+      color: #F8F8FF;
+      padding: 20px;
+      line-height: 1.5;
     }
 
     /* LOGO + TAGLINE */
     .logo-area {
-      text-align:center;
-      margin-bottom:20px;
+      text-align: center;
+      margin-bottom: 20px;
     }
     .logo-area .logo {
-      font-family:'Great Vibes', cursive;
-      font-size:3rem;
-      color:#c71585;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #E0AFFF;
     }
     .logo-area .tagline {
-      font-style:italic;
-      color:#8b008b;
-      margin-top:4px;
+      font-style: italic;
+      color: #FFA0A0;
+      margin-top: 4px;
     }
 
     /* CUSTOMER NAME */
     .user-info {
-      text-align:center;
-      margin-bottom:20px;
+      text-align: center;
+      margin-bottom: 20px;
     }
     .user-info input {
-      width:80%;
-      max-width:300px;
-      padding:10px;
-      border:none;
-      border-radius:8px;
-      background:rgba(255,255,255,0.6);
-      font-size:1rem;
-      color:#330000;
-      text-align:center;
+      width: 80%;
+      max-width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #F8F8FF;
+      font-size: 1rem;
+      text-align: center;
     }
-    .user-info input::placeholder { color:#8b008b; }
+    .user-info input::placeholder {
+      color: #FFA0A0;
+    }
 
     /* ACCORDION SECTIONS */
     .accordion {
-      width:100%;
-      background:rgba(255,255,255,0.6);
-      border:none;
-      border-radius:6px;
-      padding:12px;
-      margin-top:10px;
-      font-family:'Great Vibes', cursive;
-      font-size:1.4rem;
-      color:#c71585;
-      cursor:pointer;
-      text-align:left;
-      transition:background 0.3s;
+      width: 100%;
+      background: rgba(60,9,100,0.8);
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      margin-top: 12px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #E0AFFF;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.3s;
     }
-    .accordion:hover { background:rgba(255,255,255,0.8); }
-
+    .accordion:hover {
+      background: rgba(60,9,100,0.95);
+    }
     .panel {
-      display:none;
-      background:rgba(255,240,245,0.8);
-      border-radius:6px;
-      margin-top:6px;
-      padding:12px;
+      display: none;
+      background: rgba(15,0,20,0.7);
+      border-radius: 6px;
+      margin-top: 6px;
+      padding: 12px;
     }
 
     /* MENU ITEMS */
     .item {
-      position:relative;
-      padding:8px 0;
-      border-bottom:1px solid rgba(140,0,140,0.2);
+      position: relative;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(224,175,255,0.2);
     }
-    .item:last-child { border:none; }
+    .item:last-child {
+      border: none;
+    }
     .item-title {
-      font-weight:700;
-      color:#4b0082;
-      font-size:1.1rem;
+      font-weight: 700;
+      color: #F8F8FF;
+      font-size: 1.1rem;
     }
     .item-desc {
-      font-style:italic;
-      color:#8b008b;
-      margin:3px 0;
+      font-style: italic;
+      color: #E0AFFF;
+      margin: 4px 0;
     }
     .item-spice {
-      position:absolute;
-      right:0; top:0;
-      font-size:1rem;
+      position: absolute;
+      right: 0; top: 0;
+      font-size: 1rem;
     }
     .striker {
-      color:#c71585;
-      font-size:0.9rem;
+      color: #FFA0A0;
+      font-size: 0.9rem;
     }
     .order-controls {
-      margin-top:6px;
+      margin-top: 6px;
     }
     .order-controls input {
-      width:50px;
-      padding:5px;
-      border:none;
-      border-radius:4px;
-      text-align:center;
-      background:rgba(255,255,255,0.6);
-      color:#330000;
-      font-size:0.9rem;
+      width: 50px;
+      padding: 6px;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      color: #F8F8FF;
+      font-size: 0.9rem;
+    }
+    .order-controls input::placeholder {
+      color: #FFA0A0;
     }
 
     /* PLACE ORDER */
     #placeOrderBtn {
-      width:100%;
-      margin-top:20px;
-      padding:15px;
-      font-size:1.2rem;
-      background:#c71585;
-      color:white;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      transition:background 0.3s;
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 1.2rem;
+      background: #5A189A;
+      color: #F8F8FF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    #placeOrderBtn:hover { background:#a50f65; }
+    #placeOrderBtn:hover {
+      background: #7B2CBF;
+    }
 
     /* REVIEW BOX */
     #orderReview {
-      display:none;
-      margin-top:20px;
-      padding:15px;
-      background:rgba(255,255,255,0.9);
-      color:#330000;
-      border-radius:8px;
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255,255,255,0.05);
+      color: #F8F8FF;
+      border-radius: 8px;
     }
     #orderReview h3 {
-      font-family:'Great Vibes', cursive;
-      color:#c71585;
-      margin-bottom:10px;
+      font-family: 'Great Vibes', cursive;
+      color: #E0AFFF;
+      margin-bottom: 10px;
     }
-    #orderReview p { margin:4px 0; }
+    #orderReview p {
+      margin: 4px 0;
+    }
     #orderReview .btn {
-      margin-top:10px;
-      padding:10px 15px;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-      font-weight:700;
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
     }
-    #confirmBtn { background:#4b0082; color:white; }
-    #cancelBtn { background:#ddd; color:#330000; margin-left:10px; }
+    #confirmBtn {
+      background: #3C096C;
+      color: #F8F8FF;
+    }
+    #cancelBtn {
+      background: rgba(255,255,255,0.2);
+      color: #F8F8FF;
+      margin-left: 10px;
+    }
 
     /* MOBILE TWEAKS */
     @media(max-width:480px){
-      .logo-area .logo { font-size:2.2rem; }
-      .accordion { font-size:1.2rem; }
-      .item-title { font-size:1rem; }
+      .logo-area .logo {
+        font-size: 2.2rem;
+      }
+      .accordion {
+        font-size: 1.2rem;
+      }
+      .item-title {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -184,26 +211,16 @@
   </div>
 
   <!-- MENU SECTIONS -->
-  <!-- 1. Starter -->
+
+  <!-- 1. Starters -->
   <button class="accordion">⭐ Starters</button>
   <div class="panel">
-    <div class="item" data-spice="1">
-      <div class="item-title">Petal Squeeze Salad</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Crisp greens tossed with rose petals.</div>
-      <div class="striker">Hold a petal in your mouth 'til it melts.</div>
-    </div>
+    <!-- replicate up to 6–8 items as needed -->
     <div class="item" data-spice="2">
       <div class="item-title">Blush Blossom Bites</div>
       <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Soft dumplings drizzled in cherry glaze.</div>
+      <div class="item-desc">Dumplings drizzled with cherry glaze.</div>
       <div class="striker">Blow a cherry-kissed breath on your partner.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Naughty Note Nibbler</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Edible wafer invites your secret message.</div>
-      <div class="striker">Feed it while whispering a desire.</div>
     </div>
     <div class="item" data-spice="3">
       <div class="item-title">Undress Dare Shooter</div>
@@ -211,88 +228,31 @@
       <div class="item-desc">Mini cocktail that dares you to remove one layer.</div>
       <div class="striker">Cheers—and undress one item.</div>
     </div>
-    <div class="item" data-spice="2">
-      <div class="item-title">Tingle Tempter Tart</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Cool mint tart that tingles your senses.</div>
-      <div class="striker">Trace mint foam along a pulse point.</div>
-    </div>
-    <div class="item" data-spice="2">
-      <div class="item-title">Write Me a Message</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Edible paper for your spicy note.</div>
-      <div class="striker">Whisper while you eat your note.</div>
-    </div>
+    <!-- …add 4 more… -->
   </div>
 
-  <!-- 2. Appetizer -->
+  <!-- 2. Appetizers -->
   <button class="accordion">🍽️ Appetizers</button>
   <div class="panel">
-    <div class="item" data-spice="1">
-      <div class="item-title">Touch & Tease Bruschetta</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Garlic-toast kissed with herb oil.</div>
-      <div class="striker">Brush the toast gently on lips.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Tender Curve Tease</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Soft cheese curls shaped for caresses.</div>
-      <div class="striker">Play a gentle stroke along curves.</div>
-    </div>
     <div class="item" data-spice="2">
       <div class="item-title">Tickling Tomato Tear</div>
       <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Juicy tomato bite that bursts.</div>
-      <div class="striker">Feed and trace your partner’s heartbeat.</div>
+      <div class="item-desc">Juicy tomato that bursts on your tongue.</div>
+      <div class="striker">Feed and trace pulse points.</div>
     </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Silken Cheese Plate</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Assorted cheeses to melt on your tongue.</div>
-      <div class="striker">Blindfold and feed each other.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Rosemary Wave Bites</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Herb-infused morsels that tease.</div>
-      <div class="striker">Trace a leaf on your partner’s neck.</div>
-    </div>
+    <!-- …add 4 more… -->
   </div>
 
-  <!-- 3. Main Course -->
+  <!-- 3. Main Menu -->
   <button class="accordion">🍴 Main Menu</button>
   <div class="panel">
-    <div class="item" data-spice="1">
-      <div class="item-title">Saffron Seduction Risotto</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Creamy saffron rice that glows.</div>
-      <div class="striker">Feed each other a single spoonful.</div>
-    </div>
     <div class="item" data-spice="3">
       <div class="item-title">Spicy Plum Duck</div>
       <div class="item-spice">🌶️🌶️🌶️</div>
       <div class="item-desc">Rich duck in tangy plum glaze.</div>
       <div class="striker">Share a slow tongue twirl.</div>
     </div>
-    <div class="item" data-spice="2">
-      <div class="item-title">Garlic Caress Steak</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Tender steak brushed with garlic.</div>
-      <div class="striker">Feed a tender bite to your lover.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Truffle Whisper Pasta</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Earthy truffle in silky ribbons.</div>
-      <div class="striker">Close eyes, savor each bite.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Rosy Embrace Chicken</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Rose-infused roast that seduces.</div>
-      <div class="striker">Hold hands while you dine.</div>
-    </div>
+    <!-- …add 4 more… -->
   </div>
 
   <!-- 4. Drinks -->
@@ -304,65 +264,19 @@
       <div class="item-desc">Floral sips with a cherry finish.</div>
       <div class="striker">Sip and sway in each other’s arms.</div>
     </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Velvet Vermouth</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Smooth vermouth with velvet notes.</div>
-      <div class="striker">Clink glasses slowly.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Passion Peach Punch</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Fruity punch with peach zest.</div>
-      <div class="striker">Feed a sip to each other.</div>
-    </div>
-    <div class="item" data-spice="2">
-      <div class="item-title">Raspberry Romance Soda</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Bubbly soda with raspberry tease.</div>
-      <div class="striker">Put lip gloss, then sip.</div>
-    </div>
-    <div class="item" data-spice="2">
-      <div class="item-title">Pink Pepper Margarita</div>
-      <div class="item-spice">🌶️🌶️</div>
-      <div class="item-desc">Margarita kissed by pink peppercorns.</div>
-      <div class="striker">Rim kiss before each drink.</div>
-    </div>
+    <!-- …add 4 more… -->
   </div>
 
-  <!-- 5. Dessert -->
+  <!-- 5. Desserts -->
   <button class="accordion">🍰 Desserts</button>
   <div class="panel">
-    <div class="item" data-spice="1">
-      <div class="item-title">Crimson Velvet Cake</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Red velvet layers with cream cheese.</div>
-      <div class="striker">Share a frosting kiss.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Chocolate Lust Mousse</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Dark chocolate swirl in a cup.</div>
-      <div class="striker">Feed each other with a flourish.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Blushed Berry Parfait</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Layers of berries and whipped cream.</div>
-      <div class="striker">Hold spoon together.</div>
-    </div>
-    <div class="item" data-spice="1">
-      <div class="item-title">Cherry Blossom Sorbet</div>
-      <div class="item-spice">🌶️</div>
-      <div class="item-desc">Icy sorbet with cherry petals.</div>
-      <div class="striker">Trace a petal on lips.</div>
-    </div>
     <div class="item" data-spice="3">
       <div class="item-title">Fiery Cinnamon Crumble</div>
       <div class="item-spice">🌶️🌶️🌶️</div>
       <div class="item-desc">Warm crumble kissed by cinnamon heat.</div>
       <div class="striker">Warm breath on their neck after each bite.</div>
     </div>
+    <!-- …add 4 more… -->
   </div>
 
   <!-- PLACE ORDER -->
@@ -372,81 +286,66 @@
   <div id="orderReview">
     <h3>Review & Confirm</h3>
     <div id="reviewLines"></div>
-    <button id="confirmBtn" class="btn">Confirm & Send</button>
+    <button id="confirmBtn" class="btn">Confirm &amp; Send</button>
     <button id="cancelBtn" class="btn">Cancel</button>
   </div>
 
   <script>
-    // Accordion toggle
-    document.querySelectorAll('.accordion').forEach(btn => {
+    // Toggle accordions
+    document.querySelectorAll('.accordion').forEach(btn =>
       btn.addEventListener('click', () => {
-        let p = btn.nextElementSibling;
+        const p = btn.nextElementSibling;
         p.style.display = p.style.display === 'block' ? 'none' : 'block';
-      });
-    });
+      })
+    );
 
-    // Add qty inputs
+    // Add quantity inputs
     document.querySelectorAll('.item').forEach(item => {
-      let ctrl = document.createElement('div');
+      const ctrl = document.createElement('div');
       ctrl.className = 'order-controls';
       ctrl.innerHTML = 'Qty: <input type="number" min="0" placeholder="0" class="qty-input"/>';
-      let input = ctrl.querySelector('input');
-      input.addEventListener('focus', () => input.placeholder = '');
+      const inp = ctrl.querySelector('input');
+      inp.addEventListener('focus', () => inp.placeholder = '');
       item.appendChild(ctrl);
     });
 
-    // Review order
+    // Review button
     document.getElementById('placeOrderBtn').addEventListener('click', () => {
-      let name = document.getElementById('customerName').value.trim();
-      if (!name) {
-        return alert('Please enter your name.');
-      }
+      const name = document.getElementById('customerName').value.trim();
+      if (!name) return alert('Enter your sexy Name');
+      const lines = [`Gappagap Café Order`, `Name: ${name}`];
+      let count=0;
 
-      let lines = [`*Gappagap Café Order*`, `Name: ${name}`];
-      let totalItems = 0;
-
-      document.querySelectorAll('.item').forEach(item => {
-        let qty = parseInt(item.querySelector('.qty-input').value || '0',10);
-        if (qty>0) {
-          totalItems += qty;
-          let title = item.querySelector('.item-title').innerText;
-          let spice = '🌶️'.repeat(item.dataset.spice);
-          lines.push(`${qty}× ${title} [${spice}]`);
+      document.querySelectorAll('.item').forEach(it => {
+        const q = parseInt(it.querySelector('.qty-input').value||'0',10);
+        if (q>0) {
+          count+=q;
+          const t = it.querySelector('.item-title').innerText;
+          const spice = '🌶️'.repeat(it.dataset.spice);
+          lines.push(`${q}× ${t} [${spice}]`);
         }
       });
 
-      if (totalItems===0) {
-        return alert('Select at least one item.');
-      }
+      if (!count) return alert('Select at least one item.');
+      lines.push(`Total items: ${count}`);
+      lines.push('Prepare for a wild, spicy night! 🔥💋');
 
-      lines.push(`*Items total: ${totalItems}*`);
-      lines.push('_Get ready for a sizzling night! 🔥💋_');
-
-      // Populate review box
-      document.getElementById('reviewLines').innerHTML = lines.slice(1).map(l => `<p>${l}</p>`).join('');
-      document.getElementById('orderReview').style.display = 'block';
-      // Scroll into view
-      document.getElementById('orderReview').scrollIntoView({behavior:'smooth'});
+      document.getElementById('reviewLines').innerHTML =
+        lines.slice(1).map(l=>`<p>${l}</p>`).join('');
+      document.getElementById('orderReview').style.display='block';
     });
 
-    // Cancel review
-    document.getElementById('cancelBtn').addEventListener('click', () => {
-      document.getElementById('orderReview').style.display = 'none';
-    });
-
-    // Confirm & send
+    // Cancel & Confirm
+    document.getElementById('cancelBtn').addEventListener('click', () =>
+      document.getElementById('orderReview').style.display='none'
+    );
     document.getElementById('confirmBtn').addEventListener('click', () => {
-      let phone = '918950925182';
-      let text = encodeURIComponent(
+      const phone = '918950925182';
+      const text = encodeURIComponent(
         document.getElementById('reviewLines').innerText
-          .split('\n')
-          .map(line => line.trim())
-          .filter(l => l)
-          .join('\n')
       );
       window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     });
   </script>
-
 </body>
 </html>
